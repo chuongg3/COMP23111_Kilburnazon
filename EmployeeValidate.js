@@ -68,7 +68,6 @@ function validateUpdateForm(){
     }
     
     // Get all values from document we want to verify
-    // let employeeID = document.getElementById("employeeID").value;
     let employeeName = document.getElementById("employeeName").value;
     let employeeAddress = document.getElementById("employeeAddress").value;
     let employeeSalary = document.getElementById("employeeSalary").value;
@@ -80,10 +79,6 @@ function validateUpdateForm(){
     let employeeEmergencyPhone = document.getElementById("employeeEmergencyPhone").value;
 
     // Return false if any of the fields are empty
-    // if(employeeID == ""){
-    //     document.getElementById("errorID").innerHTML = "Please enter the employee's ID<br>";
-    //     return false;
-    // } 
     if(employeeName == ""){
         document.getElementById("errorName").innerHTML = "Please enter the employee's Name<br>";
         return false;
@@ -123,6 +118,25 @@ function validateUpdateForm(){
 }
 
 function validateChooseUpdateEmployee(){
+    // Refresh all error messages
+    let errorElements = document.getElementsByClassName("error");
+    for (var i = 0; i < errorElements.length; i++){
+        errorElements.item(i).innerHTML = "";
+    }
+
+    let eChangeID = document.getElementById("changeEmployeeID").value;
+    let eIDRegex = /\d{2}-\d{7}/;
+
+    // Check if employee ID field is populated
+    if (eChangeID == ""){
+        document.getElementById("errorChangeEmployeeID").innerHTML = "Please enter an employee's ID to proceed";
+        return false;
+    }
+    // Check if length of employee ID field is 10
+    else if (!eIDRegex.test(eChangeID)){
+        document.getElementById("errorChangeEmployeeID").innerHTML = "Employee ID is in the wrong format of \"00-0000000\"";
+        return false;
+    }
     return true;
 }
 

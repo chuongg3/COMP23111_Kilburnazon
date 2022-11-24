@@ -6,7 +6,6 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>New Employee Document</title>
-    <!-- <script type="text/javascript" src="updateEmployeeValidate.js"></script> -->
     <script type="text/javascript" src="../EmployeeValidate.js"></script>
     <link rel="stylesheet" type="text/css" href="../Employee.css">
 </head>
@@ -14,12 +13,10 @@
 <body>
     <!-- Form to ask for user information -->
 
-
-
     <!-- PHP to get information from database -->
     <?php
     if ($_SERVER["REQUEST_METHOD"] == "POST") {
-        // echo ("Inside POST");
+        // Contains the employee ID of the employee we are going to update information for
         $changeEmployeeID = $_POST['changeEmployeeID'];
         // Show the form to look up user
         echo ('
