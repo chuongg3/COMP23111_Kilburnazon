@@ -32,8 +32,6 @@ function connectDB()
 
 function insertEmployee()
 {
-    // Connect to database
-    // connectDB();
     // Connection Information
     $database_host = "dbhost.cs.man.ac.uk";
     $database_user = "m19364tg";
@@ -92,5 +90,7 @@ function insertEmployee()
     } catch (PDOException $e) {
         echo ("Error Uploading: " . $e->getMessage());
     }
+
+    $conn = null;
 }
 ?>

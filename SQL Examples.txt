@@ -1,0 +1,4 @@
+// Inserts into Employee and queries the departmentID from departmentName
+
+INSERT INTO Employee(employee_ID, Name, Home_Address, Salary, DoB, NiN, department_ID)
+SELECT emp_id, name, address, salary, dob, nin, (SELECT department_ID FROM Department WHERE Department.department_Name = employeeInfo.department) FROM employeeInfo;

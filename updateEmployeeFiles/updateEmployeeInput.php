@@ -1,18 +1,9 @@
-<!DOCTYPE html>
-<html lang="en">
+<?php
 
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>New Employee Document</title>
-    <script type="text/javascript" src="addEmployeeValidate.js"></script>
-    <link rel="stylesheet" type="text/css" href="../Employee.css">
-</head>
-
-<body>
-    <h2>Please Enter the New Employee's Information </h2><br>
-    <form id="addEmployeeForm" onsubmit="return validateAddForm();" method="POST" action="newEmployeeInput.php">
+function getEmployeeInformation()
+{
+    echo ('
+    <form id="addEmployeeForm" onsubmit="return validateForm();" method="post" action="newEmployeeInput.php">
         <label>ID</label><br>
         <input type="text" id="employeeID" name="employeeID"><br>
         <span class="error" id="errorID"></span><br>
@@ -62,6 +53,6 @@
 
         <input type="submit" value="Add Employee">
     </form>
-</body>
-
-</html>
+    ');
+}
+?>

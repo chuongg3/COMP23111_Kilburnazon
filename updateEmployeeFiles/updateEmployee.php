@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>New Employee Document</title>
+    <script type="text/javascript" src="updateEmployeeValidate.js"></script>
+    <link rel="stylesheet" type="text/css" href="../Employee.css">
+</head>
+
+<body>
+    <!-- Form to ask for user information -->
+    <h2>Please Enter the Employee's ID that you would like to update </h2><br>
+    <form id="updateEmployeeForm" onsubmit="return validateUpdateForm();" method="POST"
+        action="<?php echo $_SERVER['PHP_SELF'] ?>">
+
+        <label>Employee's ID</label><br>
+        <input type="text" id="changeEmployeeID" name="changeEmployeeID"><br>
+        <span class="error" id="errorChangeEmployeeID"></span><br>
+        <input type="submit" value="Look Up">
+    </form>
+
+
+    <!-- PHP to get information from database -->
+    <?php
+    if ($_SERVER["REQUEST_METHOD"] == "POST") {
+        // echo ("Inside POST");
+        $changeEmployeeID = $_POST['changeEmployeeID'];
+
+        // Connection Information
+        $database_host = "dbhost.cs.man.ac.uk";
+        $database_user = "m19364tg";
+        $database_pass = "23111Kilburnazon";
+        $database_name = "m19364tg";
+
+        // Conect to database
+        try {
+            $pdo = new PDO("mysql:host=$database_host;dbname=$database_name", $database_user, $database_pass);
+            // set the PDO error mode to exception
+            $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+            // echo "<br>Connected successfully<br>";
+        } catch (PDOException $e) {
+            echo "ERROR Connection failed: " . $e->getMessage();
+        }
+
+        // Read from Employee table
+        $sql = "SELECT employee_Name, Home_Address, Salary, DoB, NiN, department_ID
+                FROM Employee
+                WHERE employee_ID = :changeEmployeeID;";
+
+        $stmt = $pdo->prepare($sql);
+        $stmt->execute([
+            'changeEmployeeID' => $changeEmployeeID
+        ]);
+
+        // Read the output from database
+        $stmt->setFetchMode(PDO::FETCH_ASSOC);
+        while ($row = $stmt->fetch()) {
+            $eName = $row['employee_Name'];
+            $eAddress = $row['Home_Address'];
+            $eSalary = $row['Salary'];
+            $eDoB = $row['DoB'];
+            $eNiN = $row['NiN'];
+            $eDepartment = $row['department_ID'];
+        }
+
+        // Read the from EmergencyContact Table
+        $sql = "SELECT emergency_Name, emergency_PhoneNumber, emergency_Relationship
+                FROM EmergencyContact
+                WHERE employee_ID = :changeEmployeeID";
+
+        $stmt = $pdo->prepare($sql);
+        $stmt->execute([
+            'changeEmployeeID' => $changeEmployeeID
+        ]);
+
+        $stmt->setFetchMode(PDO::FETCH_ASSOC);
+        while ($row = $stmt->fetch()) {
+            $eEmergencyName = $row['emergency_Name'];
+            $eEmergencyNumber = $row['emergency_PhoneNumber'];
+            $eEmergencyRelationship = $row['emergency_Relationship'];
+        }
+
+        echo ('
+            <h3>Please Enter the New Employee\'s Information </h3><br>
+            <form id="updateEmployeeForm" onsubmit="return validateUpdateForm();" method="POST" action="updateEmployeeInput.php">
+                <label>Name</label><br>
+                <input type="text" id="employeeName" name="employeeName" value = "' . $eName . '"><br>
+                <span class="error" id="errorName"></span><br>
+
+                <label>Address</label><br>
+                <input type="text" id="employeeAddress" name="employeeAddress" value = "' . $eAddress . '"><br>
+                <span class="error" id="errorAddress"></span><br>
+
+                <label>Salary</label><br>
+                <label>£</label>
+                <input type="text" id="employeeSalary" name="employeeSalary" value = "' . $eSalary . '"><br>
+                <span class="error" id="errorSalary"></span><br>
+
+                <label>Date of Birth</label><br>
+                <input type="date" id="employeeDoB" name="employeeDoB" value = "' . $eDoB . '"><br>
+                <span class="error" id="errorDoB"></span><br>
+
+                <label>National Insurance Number</label><br>
+                <input type="text" id="employeeNiN" name="employeeNiN" value = "' . $eNiN . '"><br>
+                <span class="error" id="errorNiN"></span><br>
+
+                <label>Department</label><br>
+                <select id="employeeDepartment" name="employeeDepartment">
+                    <option>------</option>
+                    <option value="Driver">Driver</option>
+                    <option value="Packager">Packager</option>
+                    <option value="HR">Human Resources</option>
+                    <option value="Manager">Management</option>
+                </select><br>
+                <span class="error" id="errorDepartment"></span><br>
+
+                <label>Emergency Contact Name</label><br>
+                <input type="text" id="employeeEmergencyName" name="employeeEmergencyName" value = "' . $eEmergencyName . '"><br>
+                <span class="error" id="errorEmergencyName"></span><br>
+
+                <label>Emergency Contact Relationship</label><br>
+                <input type="text" id="employeeEmergencyRelationship" name="employeeEmergencyRelationship" value = "' . $eEmergencyRelationship . '"><br>
+                <span class="error" id="errorEmergencyRelationship"></span><br>
+
+                <label>Emergency Contact Phone Number</label><br>
+                <input type="text" id="employeeEmergencyPhone" name="employeeEmergencyPhone" value = "' . $eEmergencyNumber . '"><br><br>
+                <span class="error" id="errorEmergencyPhone"></span><br>
+
+                <input type="submit" value="Update">
+            </form>
+        ');
+
+        //End connection
+        $conn = null;
+    }
+    ?>
+</body>

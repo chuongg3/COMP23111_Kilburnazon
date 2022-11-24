@@ -1,13 +1,12 @@
-function validateForm(){
-    // alert("Validating");
+function validateUpdateForm(){
+    // Refresh all error messages
     let errorElements = document.getElementsByClassName("error");
-    // alert(JSON.stringify(errorElements));
     for (var i = 0; i < errorElements.length; i++){
         errorElements.item(i).innerHTML = "";
     }
-    // alert("Validating");
+    
     // Get all values from document we want to verify
-    let employeeID = document.getElementById("employeeID").value;
+    // let employeeID = document.getElementById("employeeID").value;
     let employeeName = document.getElementById("employeeName").value;
     let employeeAddress = document.getElementById("employeeAddress").value;
     let employeeSalary = document.getElementById("employeeSalary").value;
@@ -19,10 +18,11 @@ function validateForm(){
     let employeeEmergencyPhone = document.getElementById("employeeEmergencyPhone").value;
 
     // Return false if any of the fields are empty
-    if(employeeID == ""){
-        document.getElementById("errorID").innerHTML = "Please enter the employee's ID<br>";
-        return false;
-    } if(employeeName == ""){
+    // if(employeeID == ""){
+    //     document.getElementById("errorID").innerHTML = "Please enter the employee's ID<br>";
+    //     return false;
+    // } 
+    if(employeeName == ""){
         document.getElementById("errorName").innerHTML = "Please enter the employee's Name<br>";
         return false;
     }
@@ -58,8 +58,4 @@ function validateForm(){
         document.getElementById("errorEmergencyPhone").innerHTML = "Please enter the employee's Emergency Contact's Phone Number<br>";
         return false;
     }
-}
-
-function clearErrors(item){
-    item.innerHTML = "";
 }
