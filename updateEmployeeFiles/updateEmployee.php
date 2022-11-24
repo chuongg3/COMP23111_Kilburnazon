@@ -103,7 +103,6 @@
             $eEmergencyNumber = $row['emergency_PhoneNumber'];
             $eEmergencyRelationship = $row['emergency_Relationship'];
         }
-
         echo ('
             <h3>Please Enter the New Employee\'s Information </h3>
             <form id="updateEmployeeForm" onsubmit="return validateUpdateForm();" method="POST" action="updateEmployeeInput.php">
@@ -131,13 +130,52 @@
                 <span class="error" id="errorNiN"></span><br>
 
                 <label>Department</label><br>
-                <select id="employeeDepartment" name="employeeDepartment">
-                    <option>------</option>
-                    <option value="Driver">Driver</option>
-                    <option value="Packager">Packager</option>
-                    <option value="HR">Human Resources</option>
-                    <option value="Manager">Management</option>
-                </select><br>
+                <select id="employeeDepartment" name="employeeDepartment">');
+        // Print the selected value of the department
+        if ($eDepartment == "1") {
+            echo ('
+                <option>------</option>
+                <option value="Driver" selected>Driver</option>
+                <option value="Packager">Packager</option>
+                <option value="HR">Human Resources</option>
+                <option value="Manager">Management</option>
+            ');
+        } else if ($eDepartment == "2") {
+            echo ('
+                <option>------</option>
+                <option value="Driver">Driver</option>
+                <option value="Packager" selected>Packager</option>
+                <option value="HR">Human Resources</option>
+                <option value="Manager">Management</option>
+            ');
+        } else if ($eDepartment == "3") {
+            echo ('
+                <option>------</option>
+                <option value="Driver">Driver</option>
+                <option value="Packager">Packager</option>
+                <option value="HR" selected>Human Resources</option>
+                <option value="Manager">Management</option>
+            ');
+        } else if ($eDepartment == "4") {
+            echo ('
+                <option>------</option>
+                <option value="Driver">Driver</option>
+                <option value="Packager">Packager</option>
+                <option value="HR">Human Resources</option>
+                <option value="Manager" selected>Management</option>
+            ');
+        } else {
+            echo ('
+                <option selected>------</option>
+                <option value="Driver">Driver</option>
+                <option value="Packager">Packager</option>
+                <option value="HR">Human Resources</option>
+                <option value="Manager">Management</option>
+            ');
+        }
+
+        // Print rest of the form
+        echo ('</select><br>
                 <span class="error" id="errorDepartment"></span><br>
 
                 <label>Emergency Contact Name</label><br>
