@@ -1,8 +1,8 @@
 <?php
 
 print_r($_POST);
-showInput();
-connectDB();
+insertEmployee();
+
 function showInput()
 {
     foreach ($_POST as $input_name => $value_input) {
@@ -33,7 +33,22 @@ function connectDB()
 function insertEmployee()
 {
     // Connect to database
-    connectDB();
+    // connectDB();
+    // Connection Information
+    $database_host = "dbhost.cs.man.ac.uk";
+    $database_user = "m19364tg";
+    $database_pass = "23111Kilburnazon";
+    $database_name = "m19364tg";
+
+    // Conect to database
+    try {
+        $pdo = new PDO("mysql:host=$database_host;dbname=$database_name", $database_user, $database_pass);
+        // set the PDO error mode to exception
+        $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+        // echo "<br>Connected successfully<br>";
+    } catch (PDOException $e) {
+        echo "ERROR Connection failed: " . $e->getMessage();
+    }
 
     // Get all values from POST
     $eID = $_POST['employeeID'];
@@ -41,6 +56,7 @@ function insertEmployee()
     $eAddress = $_POST['employeeAddress'];
     $eSalary = $_POST['employeeSalary'];
     $eDoB = $_POST['employeeDoB'];
+    $eNiN = $_POST['employeeNiN'];
     $eDepartment = $_POST['employeeDepartment'];
     $eEmergencyName = $_POST['employeeEmergencyName'];
     $eEmergencyRelationship = $_POST['employeeEmergencyRelationship'];
@@ -49,8 +65,32 @@ function insertEmployee()
     // Count number of records with employeeID, if > 0, then fail
 
     // Insert employee into database
+    $sql = "INSERT INTO Employee(employee_ID, employee_Name, Home_Address, Salary, DoB, NiN, department_ID)
+            VALUES (:eID, :eName, :eAddress, :eSalary, :eDoB, :eNiN, (SELECT department_ID FROM Department WHERE Department.department_Name = :eDepartment));
+            
+            INSERT INTO EmergencyContact(employee_ID, emergency_Name, emergency_PhoneNumber, emergency_Relationship)
+            VALUES (:eID, :eEmergencyName, :eEmergencyPhone, :eEmergencyRelationship);";
+
+    try {
+        // $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+        $stmt = $pdo->prepare($sql);
+
+        $stmt->execute([
+            'eID' => $eID,
+            'eName' => $eName,
+            'eAddress' => $eAddress,
+            'eSalary' => $eSalary,
+            'eDoB' => $eDoB,
+            'eNiN' => $eNiN,
+            'eDepartment' => $eDepartment,
+            'eEmergencyName' => $eEmergencyName,
+            'eEmergencyPhone' => $eEmergencyPhone,
+            'eEmergencyRelationship' => $eEmergencyRelationship
+        ]);
+
+        echo ("Successfully Uploaded to DB");
+    } catch (PDOException $e) {
+        echo ("Error Uploading: " . $e->getMessage());
+    }
 }
-// echo ("hello");
-
-
 ?>

@@ -12,6 +12,7 @@ function validateForm(){
     let employeeAddress = document.getElementById("employeeAddress").value;
     let employeeSalary = document.getElementById("employeeSalary").value;
     let employeeDoB = document.getElementById("employeeDoB").value;
+    let employeeNiN = document.getElementById("employeeNiN").value;
     let employeeDepartment = document.getElementById("employeeDepartment").value;
     let employeeEmergencyName = document.getElementById("employeeEmergencyName").value;
     let employeeEmergencyRelationship = document.getElementById("employeeEmergencyRelationship").value;
@@ -35,6 +36,10 @@ function validateForm(){
     }
     if(employeeDoB == ""){
         document.getElementById("errorDoB").innerHTML = "Please enter the employee's Date of Birth<br>";
+        return false;
+    }
+    if(employeeNiN == ""){
+        document.getElementById("errorNiN").innerHTML = "Please enter the employee's National Insurance Number<br>";
         return false;
     }
     if(employeeDepartment == "------"){

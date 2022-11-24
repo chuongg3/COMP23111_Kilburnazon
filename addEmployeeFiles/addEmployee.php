@@ -34,13 +34,17 @@
         <input type="date" id="employeeDoB" name="employeeDoB"><br>
         <span class="error" id="errorDoB"></span><br>
 
+        <label>National Insurance Number</label><br>
+        <input type="text" id="employeeNiN" name="employeeNiN"><br>
+        <span class="error" id="errorNiN"></span><br>
+
         <label>Department</label><br>
         <select id="employeeDepartment" name="employeeDepartment">
             <option>------</option>
-            <option>Driver</option>
-            <option>Packager</option>
-            <option>Human Resources</option>
-            <option>Manager</option>
+            <option value="Driver">Driver</option>
+            <option value="Packager">Packager</option>
+            <option value="HR">Human Resources</option>
+            <option value="Manager">Management</option>
         </select><br>
         <span class="error" id="errorDepartment"></span><br>
 
