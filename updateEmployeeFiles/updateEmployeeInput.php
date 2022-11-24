@@ -1,58 +1,69 @@
 <?php
 
-function getEmployeeInformation()
+updateEmployeeInformation();
+function updateEmployeeInformation()
 {
-    echo ('
-    <form id="addEmployeeForm" onsubmit="return validateForm();" method="post" action="newEmployeeInput.php">
-        <label>ID</label><br>
-        <input type="text" id="employeeID" name="employeeID"><br>
-        <span class="error" id="errorID"></span><br>
+    // Connection Information
+    $database_host = "dbhost.cs.man.ac.uk";
+    $database_user = "m19364tg";
+    $database_pass = "23111Kilburnazon";
+    $database_name = "m19364tg";
 
-        <label>Name</label><br>
-        <input type="text" id="employeeName" name="employeeName"><br>
-        <span class="error" id="errorName"></span><br>
+    // Conect to database
+    try {
+        $pdo = new PDO("mysql:host=$database_host;dbname=$database_name", $database_user, $database_pass);
+        // set the PDO error mode to exception
+        $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+        // echo "<br>Connected successfully<br>";
+    } catch (PDOException $e) {
+        echo "ERROR Connection failed: " . $e->getMessage();
+    }
 
-        <label>Address</label><br>
-        <input type="text" id="employeeAddress" name="employeeAddress"><br>
-        <span class="error" id="errorAddress"></span><br>
+    // Get all values from POST
+    $eID = $_POST['changeEmployeeID'];
+    $eName = $_POST['employeeName'];
+    $eAddress = $_POST['employeeAddress'];
+    $eSalary = $_POST['employeeSalary'];
+    $eDoB = $_POST['employeeDoB'];
+    $eNiN = $_POST['employeeNiN'];
+    $eDepartment = $_POST['employeeDepartment'];
+    $eEmergencyName = $_POST['employeeEmergencyName'];
+    $eEmergencyRelationship = $_POST['employeeEmergencyRelationship'];
+    $eEmergencyPhone = $_POST['employeeEmergencyPhone'];
 
-        <label>Salary</label><br>
-        <label>£</label>
-        <input type="text" id="employeeSalary" name="employeeSalary"><br>
-        <span class="error" id="errorSalary"></span><br>
+    // Insert employee into database
+    $sql = "UPDATE Employee
+            SET employee_Name = :eName, Home_Address = :eAddress, Salary = :eSalary, DoB = :eDoB, NiN = :eNiN, 
+                department_ID = (SELECT department_ID FROM Department WHERE Department.department_Name = :eDepartment)
+            WHERE employee_ID = :eID;
+            
+            UPDATE EmergencyContact
+            SET emergency_Name = :eEmergencyName, emergency_PhoneNumber = :eEmergencyPhone, emergency_Relationship = :eEmergencyRelationship
+            WHERE employee_ID = :eID;
+            ";
 
-        <label>Date of Birth</label><br>
-        <input type="date" id="employeeDoB" name="employeeDoB"><br>
-        <span class="error" id="errorDoB"></span><br>
+    try {
+        // $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+        $stmt = $pdo->prepare($sql);
 
-        <label>National Insurance Number</label><br>
-        <input type="text" id="employeeNiN" name="employeeNiN"><br>
-        <span class="error" id="errorNiN"></span><br>
+        $stmt->execute([
+            'eID' => $eID,
+            'eName' => $eName,
+            'eAddress' => $eAddress,
+            'eSalary' => $eSalary,
+            'eDoB' => $eDoB,
+            'eNiN' => $eNiN,
+            'eDepartment' => $eDepartment,
+            'eEmergencyName' => $eEmergencyName,
+            'eEmergencyPhone' => $eEmergencyPhone,
+            'eEmergencyRelationship' => $eEmergencyRelationship
+        ]);
 
-        <label>Department</label><br>
-        <select id="employeeDepartment" name="employeeDepartment">
-            <option>------</option>
-            <option value="Driver">Driver</option>
-            <option value="Packager">Packager</option>
-            <option value="HR">Human Resources</option>
-            <option value="Manager">Management</option>
-        </select><br>
-        <span class="error" id="errorDepartment"></span><br>
+        echo ("Successfully Updated DB");
+    } catch (PDOException $e) {
+        echo ("Error Uploading: " . $e->getMessage());
+    }
 
-        <label>Emergency Contact Name</label><br>
-        <input type="text" id="employeeEmergencyName" name="employeeEmergencyName"><br>
-        <span class="error" id="errorEmergencyName"></span><br>
-
-        <label>Emergency Contact Relationship</label><br>
-        <input type="text" id="employeeEmergencyRelationship" name="employeeEmergencyRelationship"><br>
-        <span class="error" id="errorEmergencyRelationship"></span><br>
-
-        <label>Emergency Contact Phone Number</label><br>
-        <input type="text" id="employeeEmergencyPhone" name="employeeEmergencyPhone"><br><br>
-        <span class="error" id="errorEmergencyPhone"></span><br>
-
-        <input type="submit" value="Add Employee">
-    </form>
-    ');
+    $conn = null;
 }
 ?>

@@ -6,25 +6,46 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>New Employee Document</title>
-    <script type="text/javascript" src="updateEmployeeValidate.js"></script>
+    <!-- <script type="text/javascript" src="updateEmployeeValidate.js"></script> -->
+    <script type="text/javascript" src="../EmployeeValidate.js"></script>
     <link rel="stylesheet" type="text/css" href="../Employee.css">
 </head>
 
 <body>
     <!-- Form to ask for user information -->
-    <h2>Please Enter the Employee's ID that you would like to update </h2><br>
-    <form id="updateEmployeeForm" onsubmit="return validateUpdateForm();" method="POST"
-        action="<?php echo $_SERVER['PHP_SELF'] ?>">
 
-        <label>Employee's ID</label><br>
-        <input type="text" id="changeEmployeeID" name="changeEmployeeID"><br>
-        <span class="error" id="errorChangeEmployeeID"></span><br>
-        <input type="submit" value="Look Up">
-    </form>
 
 
     <!-- PHP to get information from database -->
     <?php
+    if ($_SERVER["REQUEST_METHOD"] == "POST") {
+        // echo ("Inside POST");
+        $changeEmployeeID = $_POST['changeEmployeeID'];
+        // Show the form to look up user
+        echo ('
+            <h2>Please Enter the Employee\'s ID that you would like to update </h2><br>
+            <form id="chooseUpdateEmployeeForm" onsubmit="return validateChooseUpdateEmployee();" method="POST"
+                action="' . $_SERVER['PHP_SELF'] . '">
+
+                <label>Employee\'s ID</label><br>
+                <input type="text" id="changeEmployeeID" name="changeEmployeeID" value = "' . $changeEmployeeID . '"><br>
+                <span class="error" id="errorChangeEmployeeID"></span><br>
+                <input type="submit" value="Look Up">
+            </form>        
+        ');
+    } else {
+        echo ('
+            <h2>Please Enter the Employee\'s ID that you would like to update </h2><br>
+            <form id="chooseUpdateEmployeeForm" onsubmit="return validateChooseUpdateEmployee();" method="POST"
+                action="' . $_SERVER['PHP_SELF'] . '">
+
+                <label>Employee\'s ID</label><br>
+                <input type="text" id="changeEmployeeID" name="changeEmployeeID"><br>
+                <span class="error" id="errorChangeEmployeeID"></span><br>
+                <input type="submit" value="Look Up">
+            </form>        
+        ');
+    }
     if ($_SERVER["REQUEST_METHOD"] == "POST") {
         // echo ("Inside POST");
         $changeEmployeeID = $_POST['changeEmployeeID'];
@@ -84,8 +105,10 @@
         }
 
         echo ('
-            <h3>Please Enter the New Employee\'s Information </h3><br>
+            <h3>Please Enter the New Employee\'s Information </h3>
             <form id="updateEmployeeForm" onsubmit="return validateUpdateForm();" method="POST" action="updateEmployeeInput.php">
+                <input type="hidden" id="changeEmployeeID" name="changeEmployeeID" value="' . $changeEmployeeID . '">
+
                 <label>Name</label><br>
                 <input type="text" id="employeeName" name="employeeName" value = "' . $eName . '"><br>
                 <span class="error" id="errorName"></span><br>

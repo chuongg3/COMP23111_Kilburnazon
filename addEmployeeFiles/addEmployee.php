@@ -6,14 +6,15 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>New Employee Document</title>
-    <script type="text/javascript" src="addEmployeeValidate.js"></script>
+
+    <script type="text/javascript" src="../EmployeeValidate.js"></script>
     <link rel="stylesheet" type="text/css" href="../Employee.css">
 </head>
 
 <body>
     <h2>Please Enter the New Employee's Information </h2><br>
     <form id="addEmployeeForm" onsubmit="return validateAddForm();" method="POST" action="newEmployeeInput.php">
-        <label>ID</label><br>
+        <label>IDs</label><br>
         <input type="text" id="employeeID" name="employeeID"><br>
         <span class="error" id="errorID"></span><br>
 
