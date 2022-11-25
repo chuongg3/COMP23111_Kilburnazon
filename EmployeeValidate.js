@@ -163,6 +163,10 @@ function validateChooseDeleteEmployee(){
     return true;
 }
 
+function validateFilterForm(){
+    return true;
+}
+
 function clearErrors(item){
     item.innerHTML = "";
 }
