@@ -55,34 +55,37 @@ function filterEmployee()
                     (NOT(:eEmergencyPhoneBox = 'on') OR (:eEmergencyPhone = emergency_PhoneNumber));
                     
     ";
-
-    $stmt = $pdo->prepare($sql);
-    $stmt->execute([
-        'eID' => $eID,
-        'eIDBox' => $eIDBox,
-        'eName' => $eName,
-        'eNameBox' => $eNameBox,
-        'eAddress' => $eAddress,
-        'eAddressBox' => $eAddressBox,
-        'eSalary' => $eSalary,
-        'eSalaryBox' => $eSalaryBox,
-        'eDoB' => $eDoB,
-        'eDoBBox' => $eDoBBox,
-        'eNiN' => $eNiN,
-        'eNiNBox' => $eNiNBox,
-        'eDepartment' => $eDepartment,
-        'eDepartmentBox' => $eDepartmentBox,
-        'eEmergencyName' => $eEmergencyName,
-        'eEmergencyNameBox' => $eEmergencyNameBox,
-        'eEmergencyRelationship' => $eEmergencyRelationship,
-        'eEmergencyRelationshipBox' => $eEmergencyRelationshipBox,
-        'eEmergencyPhone' => $eEmergencyPhone,
-        'eEmergencyPhoneBox' => $eEmergencyPhoneBox
-    ]);
-
+    try {
+        $stmt = $pdo->prepare($sql);
+        $stmt->execute([
+            'eID' => $eID,
+            'eIDBox' => $eIDBox,
+            'eName' => $eName,
+            'eNameBox' => $eNameBox,
+            'eAddress' => $eAddress,
+            'eAddressBox' => $eAddressBox,
+            'eSalary' => $eSalary,
+            'eSalaryBox' => $eSalaryBox,
+            'eDoB' => $eDoB,
+            'eDoBBox' => $eDoBBox,
+            'eNiN' => $eNiN,
+            'eNiNBox' => $eNiNBox,
+            'eDepartment' => $eDepartment,
+            'eDepartmentBox' => $eDepartmentBox,
+            'eEmergencyName' => $eEmergencyName,
+            'eEmergencyNameBox' => $eEmergencyNameBox,
+            'eEmergencyRelationship' => $eEmergencyRelationship,
+            'eEmergencyRelationshipBox' => $eEmergencyRelationshipBox,
+            'eEmergencyPhone' => $eEmergencyPhone,
+            'eEmergencyPhoneBox' => $eEmergencyPhoneBox
+        ]);
+        echo ("Successfully Filtered From DB");
+    } catch (PDOException $e) {
+        echo ("Error Deleting: " . $e->getMessage());
+    }
     // Display the information we fetched
     $stmt->setFetchMode(PDO::FETCH_ASSOC);
-    echo ("<table>
+    echo ("<table border = '1'>
                 <tr>
                     <th>Name</th>
                     <th>Department</th>
@@ -98,6 +101,7 @@ function filterEmployee()
         echo ("</tr>");
     }
     echo ("</table>");
+
     $conn = null;
 }
 

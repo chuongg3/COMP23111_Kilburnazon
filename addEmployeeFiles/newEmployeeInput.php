@@ -1,6 +1,6 @@
 <?php
 
-print_r($_POST);
+// print_r($_POST);
 insertEmployee();
 
 function showInput()
@@ -61,36 +61,51 @@ function insertEmployee()
     $eEmergencyPhone = $_POST['employeeEmergencyPhone'];
 
     // Count number of records with employeeID, if > 0, then fail
-
-    // Insert employee into database
-    $sql = "INSERT INTO Employee(employee_ID, employee_Name, Home_Address, Salary, DoB, NiN, department_ID)
-            VALUES (:eID, :eName, :eAddress, :eSalary, :eDoB, :eNiN, (SELECT department_ID FROM Department WHERE Department.department_Name = :eDepartment));
-            
-            INSERT INTO EmergencyContact(employee_ID, emergency_Name, emergency_PhoneNumber, emergency_Relationship)
-            VALUES (:eID, :eEmergencyName, :eEmergencyPhone, :eEmergencyRelationship);";
-
+    $sql = "SELECT employee_ID
+            FROM Employee
+            WHERE employee_ID = :eID;
+    ";
     try {
-        // $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
         $stmt = $pdo->prepare($sql);
-
         $stmt->execute([
-            'eID' => $eID,
-            'eName' => $eName,
-            'eAddress' => $eAddress,
-            'eSalary' => $eSalary,
-            'eDoB' => $eDoB,
-            'eNiN' => $eNiN,
-            'eDepartment' => $eDepartment,
-            'eEmergencyName' => $eEmergencyName,
-            'eEmergencyPhone' => $eEmergencyPhone,
-            'eEmergencyRelationship' => $eEmergencyRelationship
+            'eID' => $eID
         ]);
-
-        echo ("Successfully Uploaded to DB");
     } catch (PDOException $e) {
-        echo ("Error Uploading: " . $e->getMessage());
+        echo ("Error");
     }
+    $stmt->setFetchMode(PDO::FETCH_ASSOC);
+    if ($stmt->rowCount() != 0) {
+        echo ("ERROR: Employee ID Already Exists");
+    } else {
+        // Insert employee into database
+        $sql = "INSERT INTO Employee(employee_ID, employee_Name, Home_Address, Salary, DoB, NiN, department_ID)
+                VALUES (:eID, :eName, :eAddress, :eSalary, :eDoB, :eNiN, (SELECT department_ID FROM Department WHERE Department.department_Name = :eDepartment));
+                
+                INSERT INTO EmergencyContact(employee_ID, emergency_Name, emergency_PhoneNumber, emergency_Relationship)
+                VALUES (:eID, :eEmergencyName, :eEmergencyPhone, :eEmergencyRelationship);";
 
+        try {
+            // $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+            $stmt = $pdo->prepare($sql);
+
+            $stmt->execute([
+                'eID' => $eID,
+                'eName' => $eName,
+                'eAddress' => $eAddress,
+                'eSalary' => $eSalary,
+                'eDoB' => $eDoB,
+                'eNiN' => $eNiN,
+                'eDepartment' => $eDepartment,
+                'eEmergencyName' => $eEmergencyName,
+                'eEmergencyPhone' => $eEmergencyPhone,
+                'eEmergencyRelationship' => $eEmergencyRelationship
+            ]);
+
+            echo ("Successfully Uploaded to DB");
+        } catch (PDOException $e) {
+            echo ("Error Uploading: " . $e->getMessage());
+        }
+    }
     $conn = null;
 }
 ?>
