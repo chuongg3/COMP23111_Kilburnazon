@@ -140,6 +140,29 @@ function validateChooseUpdateEmployee(){
     return true;
 }
 
+function validateChooseDeleteEmployee(){
+    // Refresh all error messages
+    let errorElements = document.getElementsByClassName("error");
+    for (var i = 0; i < errorElements.length; i++){
+        errorElements.item(i).innerHTML = "";
+    }
+
+    let eChangeID = document.getElementById("deleteEmployeeID").value;
+    let eIDRegex = /\d{2}-\d{7}/;
+
+    // Check if employee ID field is populated
+    if (eChangeID == ""){
+        document.getElementById("errorDeleteEmployeeID").innerHTML = "Please enter an employee's ID to proceed";
+        return false;
+    }
+    // Check if length of employee ID field is 10
+    else if (!eIDRegex.test(eChangeID)){
+        document.getElementById("errorDeleteEmployeeID").innerHTML = "Employee ID is in the wrong format of \"00-0000000\"";
+        return false;
+    }
+    return true;
+}
+
 function clearErrors(item){
     item.innerHTML = "";
 }
