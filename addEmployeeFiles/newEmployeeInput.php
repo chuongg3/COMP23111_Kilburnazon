@@ -10,26 +10,6 @@ function showInput()
     }
 }
 
-function connectDB()
-{
-    // Connection Information
-    $database_host = "dbhost.cs.man.ac.uk";
-    $database_user = "m19364tg";
-    $database_pass = "23111Kilburnazon";
-    $database_name = "m19364tg";
-
-    // Conect to database
-    try {
-        $pdo = new PDO("mysql:host=$database_host;dbname=$database_name", $database_user, $database_pass);
-        // set the PDO error mode to exception
-        $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-        echo "<br>Connected successfully<br>";
-        $conn = null;
-    } catch (PDOException $e) {
-        echo "Connection failed: " . $e->getMessage();
-    }
-}
-
 function insertEmployee()
 {
     // Connection Information
@@ -61,7 +41,7 @@ function insertEmployee()
     $eEmergencyPhone = $_POST['employeeEmergencyPhone'];
 
     // Count number of records with employeeID, if > 0, then fail
-    $sql = "SELECT employee_ID
+    $sql = "SELECT COUNT(*)
             FROM Employee
             WHERE employee_ID = :eID;
     ";
@@ -74,7 +54,7 @@ function insertEmployee()
         echo ("Error");
     }
     $stmt->setFetchMode(PDO::FETCH_ASSOC);
-    if ($stmt->rowCount() != 0) {
+    if ($stmt->fetch() != 0) {
         echo ("ERROR: Employee ID Already Exists");
     } else {
         // Insert employee into database
