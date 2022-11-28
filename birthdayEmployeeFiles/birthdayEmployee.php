@@ -12,17 +12,10 @@
 </head>
 
 <body>
-    <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
-        <a class="navbar-brand" href="../KilburnazonEmployeeManagement.php">
-            <h2>Kilburnazon</h2>
-        </a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault"
-            aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-    </nav>
-    <br><br><br><br>
     <?php
+    require_once "../Default.php";
+    echoHeader();
+
     // Connection Information
     $database_host = "dbhost.cs.man.ac.uk";
     $database_user = "m19364tg";
@@ -44,11 +37,11 @@
     $stmt = $pdo->prepare($sql);
     $stmt->execute();
 
-    echo ("<h2 style = 'margin-left: 20px'>Employees with Birthdays in " . date("F") . ":</h2>");
+    echo ("<h2 class = 'pageHeading'>Employees with Birthdays in " . date("F") . ":</h2>");
 
     // Display the information we fetched
     $stmt->setFetchMode(PDO::FETCH_ASSOC);
-    echo ("<table border = '1' style = 'margin-left: 20px;'>
+    echo ("<table border = '1' class='tableMargin'>
                 <tr>
                     <th>No.</th>
                     <th>ID</th>
@@ -56,7 +49,7 @@
                     <th>DoB</th>
                 </tr>
         ");
-    $i = 0;
+    $i = 1;
     while ($row = $stmt->fetch()) {
         echo ("<tr>");
         echo ("<td>" . $i . "</td>");
@@ -71,10 +64,10 @@
 
     ?>
     <a href="../KilburnazonEmployeeManagement.php">
-        <button type="button" class="btn btn-secondary"
-            style="margin-left: 20px; margin-top: 15px;margin-bottom: 20px;">Return to home
+        <button type="button" class="btn btn-secondary buttonMargin">Return to home
             page</button>
     </a>
+    <hr>
 </body>
 
 </html>
