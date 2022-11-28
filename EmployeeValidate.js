@@ -147,12 +147,23 @@ function validateChooseDeleteEmployee(){
         errorElements.item(i).innerHTML = "";
     }
 
+    let eID = document.getElementById('employeeID').value;
     let eChangeID = document.getElementById("deleteEmployeeID").value;
     let eIDRegex = /\d{2}-\d{7}/;
 
-    // Check if employee ID field is populated
-    if (eChangeID == ""){
+    // Check if delete employee ID field is populated
+    if (eID == ""){
+        document.getElementById("errorEmployeeID").innerHTML = "Please enter an deleter employee's ID to proceed";
+        return false;
+    }
+    // Check if delete employee ID field is populated
+    else if (eChangeID == ""){
         document.getElementById("errorDeleteEmployeeID").innerHTML = "Please enter an employee's ID to proceed";
+        return false;
+    }
+    // Check if length of employee ID field is 10
+    else if (!eIDRegex.test(eID)){
+        document.getElementById("errorEmployeeID").innerHTML = "deleter Employee ID is in the wrong format of \"00-0000000\"";
         return false;
     }
     // Check if length of employee ID field is 10
@@ -161,6 +172,10 @@ function validateChooseDeleteEmployee(){
         return false;
     }
     return true;
+}
+
+function validateEmployeeID(){
+    let eIDRegex = /\d{2}-\d{7}/;
 }
 
 function validateFilterForm(){
