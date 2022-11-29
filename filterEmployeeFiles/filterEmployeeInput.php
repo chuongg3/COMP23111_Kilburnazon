@@ -2,6 +2,20 @@
 filterEmployee();
 function filterEmployee()
 {
+    // echo ('
+    // <link href="../bootstrap.css" rel="stylesheet">
+    // <link rel="stylesheet" type="text/css" href="../Employee.css">
+    // ');
+    echo ('
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
+  </head>
+    <link rel="stylesheet" type="text/css" href="../Employee.css">
+    ');
+
+    // Header
+    require_once "../Default.php";
+    echoHeader();
+
     // Connection Information
     $database_host = "dbhost.cs.man.ac.uk";
     $database_user = "m19364tg";
@@ -81,11 +95,14 @@ function filterEmployee()
         ]);
         echo ("Successfully Filtered From DB");
     } catch (PDOException $e) {
-        echo ("Error Deleting: " . $e->getMessage());
+        echo ("Error Filtering: " . $e->getMessage());
     }
+
+    echo ("<h2 class = 'pageHeading'>Filtered Employees Results:</h2>");
+
     // Display the information we fetched
     $stmt->setFetchMode(PDO::FETCH_ASSOC);
-    echo ("<table border = '1'>
+    echo ("<table class='table table-light table-striped table-bordered>
                 <tr>
                     <th>Name</th>
                     <th>Department</th>
@@ -101,6 +118,13 @@ function filterEmployee()
         echo ("</tr>");
     }
     echo ("</table>");
+
+    echo ('
+    <a href="../KilburnazonEmployeeManagement.php">
+        <button type="button" class="btn btn-secondary buttonMargin">Return to home
+            page</button>
+    </a>
+    ');
 
     $conn = null;
 }

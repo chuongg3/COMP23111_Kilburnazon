@@ -8,12 +8,18 @@
     <title>Document</title>
     <script type="text/javascript" src="../EmployeeValidate.js"></script>
     <link rel="stylesheet" type="text/css" href="../Employee.css">
+    <!-- Bootstrap core CSS -->
+    <link href="../bootstrap.css" rel="stylesheet">
 </head>
 
 <body>
-    <h2>Please Enter the Employee's ID that you would like to DELETE </h2><br>
+    <?php
+    require_once "../Default.php";
+    echoHeader();
+    ?>
+    <h2 class="pageHeading">Please Enter the Employee's ID that you would like to DELETE </h2>
     <form id="chooseDeleteEmployeeForm" onsubmit="return validateChooseDeleteEmployee();" method="POST"
-        action="deleteEmployeeInput.php">
+        action="deleteEmployeeInput.php" class="generalForm">
 
         <label>Your ID</label><br>
         <input type="text" id="employeeID" name="employeeID"><br>
@@ -23,7 +29,7 @@
         <input type="text" id="deleteEmployeeID" name="deleteEmployeeID"><br>
         <span class="error" id="errorDeleteEmployeeID"></span><br>
 
-        <input type="submit" value="Delete">
+        <input type="submit" class="btn btn-secondary" value="Delete">
     </form>
 </body>
 

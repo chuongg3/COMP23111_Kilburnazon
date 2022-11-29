@@ -8,6 +8,8 @@
     <title>New Employee Document</title>
     <script type="text/javascript" src="../EmployeeValidate.js"></script>
     <link rel="stylesheet" type="text/css" href="../Employee.css">
+    <!-- Bootstrap core CSS -->
+    <link href="../bootstrap.css" rel="stylesheet">
 </head>
 
 <body>
@@ -15,31 +17,33 @@
 
     <!-- PHP to get information from database -->
     <?php
+    require_once "../Default.php";
+    echoHeader();
     if ($_SERVER["REQUEST_METHOD"] == "POST") {
         // Contains the employee ID of the employee we are going to update information for
         $changeEmployeeID = $_POST['changeEmployeeID'];
         // Show the form to look up user
         echo ('
-            <h2>Please Enter the Employee\'s ID that you would like to update </h2><br>
+            <h2 class="pageHeading">Please Enter the Employee\'s ID that you would like to update </h2><br>
             <form id="chooseUpdateEmployeeForm" onsubmit="return validateChooseUpdateEmployee();" method="POST"
-                action="' . $_SERVER['PHP_SELF'] . '">
+                action="' . $_SERVER['PHP_SELF'] . '" class = "generalForm">
 
                 <label>Employee\'s ID</label><br>
-                <input type="text" id="changeEmployeeID" name="changeEmployeeID" value = "' . $changeEmployeeID . '"><br>
+                <input type="text" class="form-textBox" id="changeEmployeeID" name="changeEmployeeID" value = "' . $changeEmployeeID . '"><br>
                 <span class="error" id="errorChangeEmployeeID"></span><br>
-                <input type="submit" value="Look Up">
+                <input type="submit" class="btn btn-secondary" value="Look Up">
             </form>        
         ');
     } else {
         echo ('
-            <h2>Please Enter the Employee\'s ID that you would like to update </h2><br>
+            <h2 class="pageHeading">Please Enter the Employee\'s ID that you would like to update </h2><br>
             <form id="chooseUpdateEmployeeForm" onsubmit="return validateChooseUpdateEmployee();" method="POST"
-                action="' . $_SERVER['PHP_SELF'] . '">
+                action="' . $_SERVER['PHP_SELF'] . '" class = "generalForm">
 
                 <label>Employee\'s ID</label><br>
-                <input type="text" id="changeEmployeeID" name="changeEmployeeID"><br>
+                <input type="text" class="form-textBox" id="changeEmployeeID" name="changeEmployeeID"><br>
                 <span class="error" id="errorChangeEmployeeID"></span><br>
-                <input type="submit" value="Look Up">
+                <input type="submit" class="btn btn-secondary" value="Look Up">
             </form>        
         ');
     }
@@ -94,6 +98,7 @@
             'changeEmployeeID' => $changeEmployeeID
         ]);
 
+
         $stmt->setFetchMode(PDO::FETCH_ASSOC);
         while ($row = $stmt->fetch()) {
             $eEmergencyName = $row['emergency_Name'];
@@ -101,29 +106,30 @@
             $eEmergencyRelationship = $row['emergency_Relationship'];
         }
         echo ('
-            <h3>Please Enter the New Employee\'s Information </h3>
-            <form id="updateEmployeeForm" onsubmit="return validateUpdateForm();" method="POST" action="updateEmployeeInput.php">
+            <br>
+            <h3 class="pageSubHeading">Please Enter the New Employee\'s Information </h3>
+            <form id="updateEmployeeForm" onsubmit="return validateUpdateForm();" method="POST" action="updateEmployeeInput.php" class="generalForm">
                 <input type="hidden" id="changeEmployeeID" name="changeEmployeeID" value="' . $changeEmployeeID . '">
 
                 <label>Name</label><br>
-                <input type="text" id="employeeName" name="employeeName" value = "' . $eName . '"><br>
+                <input type="text" class="form-textBox" id="employeeName" name="employeeName" value = "' . $eName . '"><br>
                 <span class="error" id="errorName"></span><br>
 
                 <label>Address</label><br>
-                <input type="text" id="employeeAddress" name="employeeAddress" value = "' . $eAddress . '"><br>
+                <input type="text" class="form-textBox" id="employeeAddress" name="employeeAddress" value = "' . $eAddress . '"><br>
                 <span class="error" id="errorAddress"></span><br>
 
                 <label>Salary</label><br>
                 <label>£</label>
-                <input type="text" id="employeeSalary" name="employeeSalary" value = "' . $eSalary . '"><br>
+                <input type="text" class="form-textBox" id="employeeSalary" name="employeeSalary" value = "' . $eSalary . '"><br>
                 <span class="error" id="errorSalary"></span><br>
 
                 <label>Date of Birth</label><br>
-                <input type="date" id="employeeDoB" name="employeeDoB" value = "' . $eDoB . '"><br>
+                <input type="date" class="form-textBox" id="employeeDoB" name="employeeDoB" value = "' . $eDoB . '"><br>
                 <span class="error" id="errorDoB"></span><br>
 
                 <label>National Insurance Number</label><br>
-                <input type="text" id="employeeNiN" name="employeeNiN" value = "' . $eNiN . '"><br>
+                <input type="text" class="form-textBox" id="employeeNiN" name="employeeNiN" value = "' . $eNiN . '"><br>
                 <span class="error" id="errorNiN"></span><br>
 
                 <label>Department</label><br>
@@ -176,18 +182,18 @@
                 <span class="error" id="errorDepartment"></span><br>
 
                 <label>Emergency Contact Name</label><br>
-                <input type="text" id="employeeEmergencyName" name="employeeEmergencyName" value = "' . $eEmergencyName . '"><br>
+                <input type="text" class="form-textBox" id="employeeEmergencyName" name="employeeEmergencyName" value = "' . $eEmergencyName . '"><br>
                 <span class="error" id="errorEmergencyName"></span><br>
 
                 <label>Emergency Contact Relationship</label><br>
-                <input type="text" id="employeeEmergencyRelationship" name="employeeEmergencyRelationship" value = "' . $eEmergencyRelationship . '"><br>
+                <input type="text" class="form-textBox" id="employeeEmergencyRelationship" name="employeeEmergencyRelationship" value = "' . $eEmergencyRelationship . '"><br>
                 <span class="error" id="errorEmergencyRelationship"></span><br>
 
                 <label>Emergency Contact Phone Number</label><br>
-                <input type="text" id="employeeEmergencyPhone" name="employeeEmergencyPhone" value = "' . $eEmergencyNumber . '"><br><br>
+                <input type="text" class="form-textBox" id="employeeEmergencyPhone" name="employeeEmergencyPhone" value = "' . $eEmergencyNumber . '"><br><br>
                 <span class="error" id="errorEmergencyPhone"></span><br>
 
-                <input type="submit" value="Update">
+                <input type="submit" class="btn btn-secondary" value="Update">
             </form>
         ');
 

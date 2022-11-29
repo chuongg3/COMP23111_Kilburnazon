@@ -41,7 +41,7 @@
 
     // Display the information we fetched
     $stmt->setFetchMode(PDO::FETCH_ASSOC);
-    echo ("<table border = '1' class='tableMargin'>
+    echo ("<br><table class='table table-light table-striped table-bordered'>
                 <tr>
                     <th>No.</th>
                     <th>ID</th>
