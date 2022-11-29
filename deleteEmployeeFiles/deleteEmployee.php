@@ -16,21 +16,28 @@
     <?php
     require_once "../Default.php";
     echoHeader();
+
+    if (empty($_POST)) {
+        echo ('
+            <h2 class="pageHeading">Please Enter the Employee\'s ID that you would like to DELETE </h2>
+            <form id="chooseDeleteEmployeeForm" onsubmit="return validateChooseDeleteEmployee();" method="POST"
+                action="" class="generalForm">
+    
+                <label>Your ID</label><br>
+                <input type="text" id="employeeID" name="employeeID"><br>
+                <span class="error" id="errorEmployeeID"></span><br>
+    
+                <label>ID to be Deleted</label><br>
+                <input type="text" id="deleteEmployeeID" name="deleteEmployeeID"><br>
+                <span class="error" id="errorDeleteEmployeeID"></span><br>
+    
+                <input type="submit" class="btn btn-secondary" value="Delete">
+            </form>
+        ');
+    } else {
+
+    }
     ?>
-    <h2 class="pageHeading">Please Enter the Employee's ID that you would like to DELETE </h2>
-    <form id="chooseDeleteEmployeeForm" onsubmit="return validateChooseDeleteEmployee();" method="POST"
-        action="deleteEmployeeInput.php" class="generalForm">
-
-        <label>Your ID</label><br>
-        <input type="text" id="employeeID" name="employeeID"><br>
-        <span class="error" id="errorEmployeeID"></span><br>
-
-        <label>ID to be Deleted</label><br>
-        <input type="text" id="deleteEmployeeID" name="deleteEmployeeID"><br>
-        <span class="error" id="errorDeleteEmployeeID"></span><br>
-
-        <input type="submit" class="btn btn-secondary" value="Delete">
-    </form>
 </body>
 
 </html>
