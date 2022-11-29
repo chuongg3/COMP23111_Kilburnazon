@@ -19,10 +19,15 @@ function validateAddForm(){
     let employeeEmergencyPhone = document.getElementById("employeeEmergencyPhone").value;
 
     // Return false if any of the fields are empty
-    if(employeeID == ""){
-        document.getElementById("errorID").innerHTML = "Please enter the employee's ID<br>";
+    // if(employeeID == ""){
+    //     return(validateEmployeeID(employeeID, document.getElementById("errorID")));
+    //     // document.getElementById("errorID").innerHTML = "Please enter the employee's ID<br>";
+    //     // return false;
+    // }
+    if(validateEmployeeID(employeeID, document.getElementById("errorID")) == false){
         return false;
-    } if(employeeName == ""){
+    }
+    if(employeeName == ""){
         document.getElementById("errorName").innerHTML = "Please enter the employee's Name<br>";
         return false;
     }
@@ -174,8 +179,19 @@ function validateChooseDeleteEmployee(){
     return true;
 }
 
-function validateEmployeeID(){
-    let eIDRegex = /\d{2}-\d{7}/;
+function validateEmployeeID(eID, spanElement){
+    if(eID == ""){
+        spanElement.innerHTML = "Please enter the employee's ID<br>";
+        return(false);
+    }
+    else{
+        let eIDRegex = /\d{2}-\d{7}/;
+        if (!eIDRegex.test(eID)){
+            spanElement.innerHTML = "Employee ID is in the wrong format<br>";
+            return(false);
+        }
+    }
+    return(true);
 }
 
 function validateFilterForm(){
