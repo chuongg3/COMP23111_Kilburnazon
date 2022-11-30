@@ -55,7 +55,7 @@ function filterEmployee()
     $eEmergencyPhone = $_POST['employeeEmergencyPhone'];
     $eEmergencyPhoneBox = $_POST['employeeEmergencyPhoneBox'];
 
-    $sql = "SELECT Employee.employee_Name, (SELECT department_Name FROM Department WHERE Department.department_ID=Employee.department_ID) as Department, EmergencyContact.emergency_Relationship, (SELECT employee_Name FROM Employee WHERE Employee.employee_Name=manager_EmployeeID) as Manager
+    $sql = "SELECT Employee.employee_Name, (SELECT department_Name FROM Department WHERE Department.department_ID=Employee.department_ID) as Department, EmergencyContact.emergency_Relationship, (SELECT e1.employee_Name FROM Employee AS e1 WHERE e1.employee_ID=Employee.manager_EmployeeID) as Manager
             FROM Employee
             LEFT JOIN EmergencyContact ON Employee.employee_ID = EmergencyContact.employee_ID
             WHERE   (NOT(:eIDBox = 'on') OR (:eID = Employee.employee_ID)) AND
