@@ -181,13 +181,136 @@ function validateChooseDeleteEmployee(){
 
 function validateEmployeeID(eID, spanElement){
     if(eID == ""){
-        spanElement.innerHTML = "Please enter the employee's ID<br>";
+        spanElement.innerHTML = "Please enter the employee's ID";
         return(false);
     }
     else{
-        let eIDRegex = /\d{2}-\d{7}/;
+        let eIDRegex = /^\d{2}-\d{7}&/;
         if (!eIDRegex.test(eID)){
-            spanElement.innerHTML = "Employee ID is in the wrong format<br>";
+            spanElement.innerHTML = "Employee ID is in the wrong format";
+            return(false);
+        }
+    }
+    return(true);
+}
+
+
+
+function validateEmployeeName(eName, spanElement){
+    if(eName == ""){
+        spanElement.innerHTML = "Please enter the employee's Name";
+        return(false);
+    }
+    else{
+        let eIDRegex = /^([A-Za-z]|\s)*$/;
+        if (!eIDRegex.test(eName)){
+            spanElement.innerHTML = "Employee Name should be text only";
+            return(false);
+        }
+    }
+    return(true);
+}
+
+function validateEmployeeAddress(eAddress, spanElement){
+    if(eAddress == ""){
+        spanElement.innerHTML = "Please enter the employee's Address";
+        return(false);
+    }
+    return(true);
+}
+
+function validateEmployeeSalary(eSalary, spanElement){
+    if(eSalary == ""){
+        spanElement.innerHTML = "Please enter the employee's Salary";
+        return(false);
+    }
+    else{
+        let eIDRegex = /^(\d)*.(\d)*$/;
+        if (!eIDRegex.test(eSalary)){
+            spanElement.innerHTML = "Employee Salary should only be a decimal number";
+            return(false);
+        }
+    }
+    return(true);
+}
+
+function validateEmployeeDoB(eDoB, spanElement){
+    if(eDoB == ""){
+        spanElement.innerHTML = "Please enter the employee's DoB";
+        return(false);
+    }
+    // else{
+    //     let eIDRegex = /^\d\d\/\d\d\/\d\d\d\d$/;
+    //     if (!eIDRegex.test(eDoB)){
+    //         spanElement.innerHTML = "Employee DoB should only be dd/mm/yyyy";
+    //         return(false);
+    //     }
+    // }
+    return(true);
+}
+
+function validateEmployeeNiN(eNiN, spanElement){
+    if(eNiN == ""){
+        spanElement.innerHTML = "Please enter the employee's NiN";
+        return(false);
+    }
+    else{
+        let eIDRegex = /^[A-Za-z][A-Za-z]\d{6}[A-Za-z]$/;
+        if (!eIDRegex.test(eNiN)){
+            spanElement.innerHTML = "Employee NiN should only be aa000000a";
+            return(false);
+        }
+    }
+    return(true);
+}
+
+function validateEmployeeDepartment(eDepartment, spanElement){
+    if(eDepartment == "------"){
+        spanElement.innerHTML = "Please select the employee's Department";
+        return(false);
+    }
+    return(true);
+}
+
+function validateEmployeeEmergencyName(eEmergencyName, spanElement){
+    if(eEmergencyName == ""){
+        spanElement.innerHTML = "Please enter the employee's Emergency Contact Name";
+        return(false);
+    }
+    else{
+        let eIDRegex = /^([A-Za-z]|\s)*$/;
+        if (!eIDRegex.test(eEmergencyName)){
+            spanElement.innerHTML = "Employee Emergency Contact name should only be text only";
+            return(false);
+        }
+    }
+    return(true);
+}
+
+function validateEmployeeEmergencyRelationship(eEmergencyRelationship, spanElement){
+    if(eEmergencyRelationship == ""){
+        spanElement.innerHTML = "Please enter the employee's Emergency Relationship";
+        return(false);
+    }
+    else{
+        let eIDRegex = /^([A-Za-z]|\s)*$/;
+        if (!eIDRegex.test(eNiN)){
+            spanElement.innerHTML = "Employee Emergency Relationship should only be text only";
+            return(false);
+        }
+    }
+    return(true);
+}
+
+function validateEmployeeEmergencyPhone(eEmergencyPhone, spanElement){
+    if(eEmergencyPhone == ""){
+        spanElement.innerHTML = "Please enter the employee's Emergency Phone Number";
+        return(false);
+    }
+    else{
+        let eIDRegex = /^([A-Za-z]|\s)*$/;
+        if (!eIDRegex.test(eNiN)){
+            spanElement.innerHTML = "Employee Emergency Phone Number should be 01234 567 890";
             return(false);
         }
     }
