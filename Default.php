@@ -2,7 +2,8 @@
 function echoHeader()
 {
     echo ('
-    <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
+    <nav style="background-color: #343a40; padding: .5rem 1rem;" class="navbar navbar-expand-md navbar-dark fixed-top">
+    
         <a class="navbar-brand" href="../KilburnazonEmployeeManagement.php">
             <h2>Kilburnazon</h2>
         </a>

@@ -18,7 +18,7 @@
     require_once "../Default.php";
     echoHeader();
     ?>
-    <h2 class="pageHeading">Please Enter the Filter Paramters </h2>
+    <h2 class="pageHeading">Please Enter the Filter Parameters </h2>
     <form id="filterEmployeeForm" onsubmit="return validateFilterForm();" method="POST" action="filterEmployeeInput.php"
         class="generalForm">
         <label>Employee's ID</label><br>
