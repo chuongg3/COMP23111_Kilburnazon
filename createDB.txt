@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Nov 28, 2022 at 01:07 PM
+-- Generation Time: Nov 30, 2022 at 08:17 PM
 -- Server version: 8.0.27
 -- PHP Version: 7.4.30
 
@@ -66,13 +66,6 @@ CREATE TABLE `DeleteLog` (
   `Delete_Date` date NOT NULL,
   `Delete_Time` time NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3 COLLATE=utf8_unicode_ci;
-
---
--- Dumping data for table `DeleteLog`
---
-
-INSERT INTO `DeleteLog` (`Deleter`, `Deleted`, `Delete_Date`, `Delete_Time`) VALUES
-('23-4567891', '34-5678912', '2022-11-25', '14:26:13');
 
 -- --------------------------------------------------------
 
@@ -139,7 +132,6 @@ CREATE TABLE `EmergencyContact` (
 
 INSERT INTO `EmergencyContact` (`employee_ID`, `emergency_Name`, `emergency_PhoneNumber`, `emergency_Relationship`) VALUES
 ('00-4334715', 'Anastasia Camamile', '07043 627 535', 'Civil Partner'),
-('01-2345678', 'Tuan Chuong Goh', '07897 382 642', 'Same'),
 ('01-5576008', 'Gustave Benedikt', '07689 714 850', 'Husband'),
 ('01-6146269', 'Chandra Tiesman', '07829 492 462', 'Father'),
 ('01-9065592', 'Zachariah Trassler', '07670 477 662', 'Girlfriend'),
@@ -189,7 +181,6 @@ INSERT INTO `EmergencyContact` (`employee_ID`, `emergency_Name`, `emergency_Phon
 ('11-6489646', 'Ogden Wynne', '07740 998 062', 'Father'),
 ('11-9162644', 'Gerry Bastone', '07831 515 385', 'Boyfriend'),
 ('12-0104092', 'Sibyl Danovich', '07655 343 095', 'Girlfriend'),
-('12-3456789', 'K', '07897 382 642', 'G'),
 ('12-5128654', 'Renee Kubatsch', '07643 213 336', 'Mother'),
 ('12-6888959', 'Neila Haimes', '07794 407 646', 'Girlfriend'),
 ('12-8760096', 'Thain Kellard', '07540 241 186', 'Boyfriend'),
@@ -237,7 +228,6 @@ INSERT INTO `EmergencyContact` (`employee_ID`, `emergency_Name`, `emergency_Phon
 ('22-6627032', 'Noland Doret', '07157 222 552', 'Boyfriend'),
 ('22-7191567', 'Jeremiah Pavlasek', '07425 200 343', 'Father'),
 ('22-9529013', 'Hieronymus Eldon', '07315 598 289', 'Mother'),
-('23-4567891', 'Tuan Chuong Goh', '7897382642', 'Mother'),
 ('24-4585192', 'Nariko Illsley', '07008 281 309', 'Civil Partner'),
 ('24-4677621', 'Inness Hendrick', '07196 056 242', 'Father'),
 ('24-6851371', 'Esme MacGlory', '07291 150 140', 'Girlfriend'),
@@ -288,7 +278,6 @@ INSERT INTO `EmergencyContact` (`employee_ID`, `emergency_Name`, `emergency_Phon
 ('34-2543597', 'Megen Vynall', '07100 762 873', 'Wife'),
 ('34-2817296', 'Shannon Kesteven', '07543 934 498', 'Father'),
 ('34-4740678', 'Nobie Scardifeild', '07035 382 913', 'Mother'),
-('34-5678912', 'chftg', 'njnuig', 'jbhkjn'),
 ('34-8601206', 'Pandora Furnell', '07519 157 083', 'Husband'),
 ('34-8695852', 'Penelope Hancill', '07018 375 399', 'Mother'),
 ('35-2689059', 'Wain Corneck', '07089 659 356', 'Girlfriend'),
@@ -353,7 +342,6 @@ INSERT INTO `EmergencyContact` (`employee_ID`, `emergency_Name`, `emergency_Phon
 ('45-3804689', 'Tam Howler', '07107 484 803', 'Boyfriend'),
 ('45-3951342', 'Arthur Landsborough', '07679 670 222', 'Mother'),
 ('45-5773014', 'Ken Sloane', '07771 820 262', 'Mother'),
-('45-6789123', 'chftg', 'njnuig', 'jbhkjn'),
 ('45-6995640', 'Troy Connock', '07603 307 243', 'Boyfriend'),
 ('45-7500187', 'Agnella Wyman', '07269 336 319', 'Husband'),
 ('46-0059406', 'Paule Willingham', '07689 398 886', 'Father'),
@@ -401,7 +389,6 @@ INSERT INTO `EmergencyContact` (`employee_ID`, `emergency_Name`, `emergency_Phon
 ('54-8296596', 'Porter Nance', '07097 155 888', 'Civil Partner'),
 ('54-9522118', 'Ilsa McAusland', '07064 930 835', 'Boyfriend'),
 ('55-0320348', 'Zita Stanborough', '07532 693 273', 'Mother'),
-('55-3623151', 'Marcie Prattington', '07297 230 400', 'Mother'),
 ('55-3650046', 'Nanete Hassard', '07005 200 200', 'Boyfriend'),
 ('55-4384947', 'Bradly Mitrovic', '07708 980 078', 'Husband'),
 ('55-5908272', 'Alden Bourthoumieux', '07435 864 662', 'Boyfriend'),
@@ -669,7 +656,6 @@ CREATE TABLE `Employee` (
 INSERT INTO `Employee` (`employee_ID`, `employee_Name`, `Home_Address`, `Salary`, `DoB`, `NiN`, `department_ID`, `manager_EmployeeID`) VALUES
 ('00-0000000', 'Ex-Employee', '----------', '0.00', '1900-01-01', 'ab123456c', 2, NULL),
 ('00-4334715', 'Stormie Lowndes', '280 Thompson Plaza', '66017.87', '1964-11-20', 'xn991742p', 3, NULL),
-('01-2345678', 'GT', '8 Manchester', '250000.00', '2003-07-02', 'it152291r', 2, NULL),
 ('01-5576008', 'Jaquenetta Rankin', '3249 Dahle Plaza', '42698.62', '1988-12-28', 'ir187391u', 2, NULL),
 ('01-6146269', 'Krispin Eastmond', '584 Twin Pines Place', '46304.52', '1956-04-25', 'oc293284f', 1, NULL),
 ('01-9065592', 'Catina Josovitz', '09 Center Alley', '78353.10', '1974-12-09', 'gl907590t', 1, NULL),
@@ -719,7 +705,6 @@ INSERT INTO `Employee` (`employee_ID`, `employee_Name`, `Home_Address`, `Salary`
 ('11-6489646', 'Alfie Glasebrook', '5942 Del Mar Court', '24207.50', '1987-08-25', 'kc363601g', 3, NULL),
 ('11-9162644', 'Ninnette Reach', '018 2nd Parkway', '33411.86', '2002-04-11', 'qi586048l', 1, NULL),
 ('12-0104092', 'Gerladina MacGinney', '270 Melody Park', '26606.61', '1992-12-29', 'pc545418r', 2, NULL),
-('12-3456789', 'TCG', '8 Nobel', '100000.00', '2003-07-02', 'it152291r', 2, NULL),
 ('12-5128654', 'Hadlee Stealey', '0 4th Court', '52510.07', '1997-11-17', 'tf577069v', 2, NULL),
 ('12-6888959', 'Benoit Collman', '827 Erie Junction', '74922.96', '1982-12-12', 'yc393041q', 2, NULL),
 ('12-8760096', 'Mallorie De Brett', '1 Lillian Drive', '27166.70', '1987-05-25', 'gb976841w', 2, NULL),
@@ -767,7 +752,6 @@ INSERT INTO `Employee` (`employee_ID`, `employee_Name`, `Home_Address`, `Salary`
 ('22-6627032', 'Brynna Dyble', '0 Bonner Pass', '23496.30', '1979-05-05', 'al340446b', 2, NULL),
 ('22-7191567', 'Goddard Bagot', '362 Coleman Way', '90643.98', '1980-05-24', 'lx057194p', 1, NULL),
 ('22-9529013', 'Reginauld Oak', '8 Pleasure Drive', '80693.80', '1955-03-25', 'ju954932e', 2, NULL),
-('23-4567891', 'Goh', '12', '10000.00', '2003-07-02', 'it152291r', 2, NULL),
 ('24-4585192', 'Elvira Vinson', '37 Kipling Lane', '91216.82', '1966-06-10', 'sa107205q', 2, NULL),
 ('24-4677621', 'Derril Scaife', '4 Tony Street', '82281.31', '1965-01-08', 'qb596623c', 2, NULL),
 ('24-6851371', 'Puff Speeding', '22016 New Castle Hill', '78841.84', '1951-11-12', 'mh954487u', 1, NULL),
@@ -818,7 +802,6 @@ INSERT INTO `Employee` (`employee_ID`, `employee_Name`, `Home_Address`, `Salary`
 ('34-2543597', 'Rodina Ofener', '5556 Schmedeman Court', '92118.32', '1973-07-13', 'dy170889s', 2, NULL),
 ('34-2817296', 'Jemmy Levens', '298 Elka Alley', '31521.70', '1950-09-26', 'dw387671h', 2, NULL),
 ('34-4740678', 'Germain Stockow', '102 Haas Junction', '56278.62', '1981-05-30', 'yo417120d', 2, NULL),
-('34-5678912', 'vhky', 'bukj', '3456789.00', '2003-07-02', 'it152291r', 1, NULL),
 ('34-8601206', 'Dulcia Antonutti', '9 Kingsford Plaza', '61015.90', '1996-07-19', 'za364662q', 1, NULL),
 ('34-8695852', 'Reg Lanphier', '049 Cambridge Road', '93925.10', '1979-12-09', 'lr289379r', 3, NULL),
 ('35-2689059', 'Junette Hackforth', '74801 Lakewood Trail', '36180.91', '1998-03-26', 'pr407605t', 1, NULL),
@@ -883,7 +866,6 @@ INSERT INTO `Employee` (`employee_ID`, `employee_Name`, `Home_Address`, `Salary`
 ('45-3804689', 'Pauly McDell', '4 Fordem Trail', '66117.54', '2001-09-18', 'ac869050u', 1, NULL),
 ('45-3951342', 'Chris Skittrell', '174 Namekagon Court', '80039.37', '1986-08-23', 'io334297g', 3, NULL),
 ('45-5773014', 'Patric Etienne', '87269 Huxley Place', '22053.53', '1954-12-24', 'nd673205l', 1, NULL),
-('45-6789123', 'vhky', 'bukj', '3456789.00', '2003-07-02', 'it152291r', 1, NULL),
 ('45-6995640', 'Sigfrid Mankor', '9773 Old Shore Way', '12758.05', '1997-07-13', 'fi299116a', 1, NULL),
 ('45-7500187', 'Juditha Pesterfield', '076 Heath Drive', '37428.34', '1952-10-19', 'zf490474b', 1, NULL),
 ('46-0059406', 'Marylou McClunaghan', '7 Bluestem Pass', '60710.92', '1982-09-24', 'ys652384q', 2, NULL),
@@ -931,7 +913,6 @@ INSERT INTO `Employee` (`employee_ID`, `employee_Name`, `Home_Address`, `Salary`
 ('54-8296596', 'Tommie Vallintine', '37 Superior Parkway', '87912.38', '1973-11-21', 'tm808573f', 2, NULL),
 ('54-9522118', 'Nari Chowne', '169 Clemons Drive', '40585.75', '1979-01-17', 'vm874796y', 4, NULL),
 ('55-0320348', 'Granville McKitterick', '04 Rieder Parkway', '83664.78', '1965-02-20', 'dr180938w', 1, NULL),
-('55-3623151', 'Malissia Osgardby', '29416 Grover Alley', '17424.03', '1989-12-26', 'it152291r', 1, NULL),
 ('55-3650046', 'Gerek Bardnam', '91085 Maple Court', '51185.61', '1966-12-29', 'xh198735c', 1, NULL),
 ('55-4384947', 'Eudora Marten', '6 Corry Road', '80059.87', '1981-08-19', 'mz193764k', 2, NULL),
 ('55-5908272', 'Petronille Squelch', '67 Golden Leaf Park', '65853.46', '1987-01-30', 'ly831340g', 2, NULL),
@@ -1156,14 +1137,14 @@ INSERT INTO `Employee` (`employee_ID`, `employee_Name`, `Home_Address`, `Salary`
 ('95-7092127', 'Dulciana Duxfield', '44249 Westridge Drive', '62408.05', '1964-10-18', 'do305555k', 2, NULL),
 ('96-0987852', 'Nataline Roycroft', '52339 Eastlawn Crossing', '81005.05', '1967-06-04', 'rc734008g', 2, NULL),
 ('96-1648398', 'Hugues Tavner', '78 Parkside Point', '37393.68', '1980-12-03', 'va219127u', 1, NULL),
-('97-0147786', 'Haze Rosenbush', '0 Kropf Alley', '89561.58', '1995-11-10', 'wx774255i', 3, NULL);
-INSERT INTO `Employee` (`employee_ID`, `employee_Name`, `Home_Address`, `Salary`, `DoB`, `NiN`, `department_ID`, `manager_EmployeeID`) VALUES
+('97-0147786', 'Haze Rosenbush', '0 Kropf Alley', '89561.58', '1995-11-10', 'wx774255i', 3, NULL),
 ('97-0913105', 'Kelly Farragher', '6 Meadow Vale Trail', '52644.35', '1980-10-20', 'ob677832o', 3, NULL),
 ('97-3138911', 'Alvina Paterno', '09 Golf Drive', '23002.76', '1986-06-21', 'ao592540g', 1, NULL),
 ('97-3703178', 'Thatch Kinvig', '9 Fuller Street', '31866.49', '1983-03-16', 'gm065123w', 3, NULL),
 ('97-4110845', 'Judah Groomebridge', '1714 Clyde Gallagher Point', '52171.58', '1959-10-25', 'kc825703y', 3, NULL),
 ('97-5558458', 'Sarina Kalb', '565 Annamark Alley', '45859.99', '1950-11-14', 'qu905290s', 2, NULL),
-('97-5683996', 'Cornie Hub', '564 Muir Alley', '13017.59', '1999-04-01', 'vs049545n', 1, NULL),
+('97-5683996', 'Cornie Hub', '564 Muir Alley', '13017.59', '1999-04-01', 'vs049545n', 1, NULL);
+INSERT INTO `Employee` (`employee_ID`, `employee_Name`, `Home_Address`, `Salary`, `DoB`, `NiN`, `department_ID`, `manager_EmployeeID`) VALUES
 ('97-6528129', 'Darn O\'Lunny', '228 Porter Street', '23811.76', '1962-06-23', 'ai316031z', 1, NULL),
 ('97-9018441', 'Morganica Dracksford', '867 Pierstorff Hill', '91483.69', '1986-08-03', 'po115732f', 1, NULL),
 ('98-1678319', 'Lamar Chesters', '2234 Heffernan Place', '97090.47', '1952-02-01', 'wh660279o', 1, NULL),

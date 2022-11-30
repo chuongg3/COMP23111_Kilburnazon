@@ -209,30 +209,30 @@
             <form id="updateEmployeeForm" onsubmit="return validateUpdateForm();" method="POST" action="" class="generalForm">
                 <input type="hidden" id="changeEmployeeID" name="changeEmployeeID" value="' . $changeEmployeeID . '">
 
-                <label class="form-label">Name</label><br>
+                <label class="form-label">Name</label>
                 <input type="text" class="form-control" id="employeeName" name="employeeName" value = "' . $eName . '"><br>
-                <span class="error" id="errorName"></span><br>
+                <span class="error" id="errorName"></span>
 
-                <label class="form-label">Address</label><br>
+                <label class="form-label">Address</label>
                 <input type="text" class="form-control" id="employeeAddress" name="employeeAddress" value = "' . $eAddress . '"><br>
-                <span class="error" id="errorAddress"></span><br>
+                <span class="error" id="errorAddress"></span>
 
-                <label class="form-label">Salary</label><br>
+                <label class="form-label">Salary</label>
                 <div class="input-group mb-3">
                     <span class="input-group-text" id="poundAddOn">£</span>
                     <input type="text" class="form-control" id="employeeSalary" name="employeeSalary" value = "' . $eSalary . '"><br>
                 </div>
-                <span class="error" id="errorSalary"></span><br>
+                <span class="error" id="errorSalary"></span>
 
-                <label class="form-label">Date of Birth</label><br>
+                <label class="form-label">Date of Birth</label>
                 <input type="date" class="form-control" id="employeeDoB" name="employeeDoB" value = "' . $eDoB . '"><br>
-                <span class="error" id="errorDoB"></span><br>
+                <span class="error" id="errorDoB"></span>
 
-                <label class="form-label">National Insurance Number</label><br>
+                <label class="form-label">National Insurance Number</label>
                 <input type="text" class="form-control" id="employeeNiN" name="employeeNiN" value = "' . $eNiN . '"><br>
-                <span class="error" id="errorNiN"></span><br>
+                <span class="error" id="errorNiN"></span>
 
-                <label class="form-label">Department</label><br>
+                <label class="form-label">Department</label>
                 <select class="form-select" id="employeeDepartment" name="employeeDepartment">');
         // Print the selected value of the department
         if ($eDepartment == "1") {
@@ -278,25 +278,25 @@
         }
 
         // Print rest of the form
-        echo ('</select><br>
+        echo ('</select>
                 <span class="error" id="errorDepartment"></span><br>
 
-                <label class="form-label">Emergency Contact Name</label><br>
+                <label class="form-label">Emergency Contact Name</label>
                 <input type="text" class="form-control" id="employeeEmergencyName" name="employeeEmergencyName" value = "' . $eEmergencyName . '"><br>
-                <span class="error" id="errorEmergencyName"></span><br>
+                <span class="error" id="errorEmergencyName"></span>
 
-                <label class="form-label">Emergency Contact Relationship</label><br>
+                <label class="form-label">Emergency Contact Relationship</label>
                 <input type="text" class="form-control" id="employeeEmergencyRelationship" name="employeeEmergencyRelationship" value = "' . $eEmergencyRelationship . '"><br>
-                <span class="error" id="errorEmergencyRelationship"></span><br>
+                <span class="error" id="errorEmergencyRelationship"></span>
 
-                <label class="form-label">Emergency Contact Phone Number</label><br>
+                <label class="form-label">Emergency Contact Phone Number</label>
                 <input type="text" class="form-control" id="employeeEmergencyPhone" name="employeeEmergencyPhone" value = "' . $eEmergencyNumber . '"><br><br>
-                <span class="error" id="errorEmergencyPhone"></span><br>
+                <span class="error" id="errorEmergencyPhone"></span>
 
                 <input name="updateButton" type="submit" class="btn btn-secondary" value="Update">
                 <a href="../KilburnazonEmployeeManagement.php"><button style="margin-left:1%;" type="button"
                         class="btn btn-secondary">Back</button></a>
-            </form>
+            </form><br>
         ');
         $pdo = null;
     }
@@ -310,7 +310,7 @@
 
                 <label class="form-label" >Employee\'s ID</label><br>
                 <input type="text" class="form-control" id="changeEmployeeID" name="changeEmployeeID"><br>
-                <span class="error" id="errorChangeEmployeeID"></span><br>
+                <span class="error" id="errorChangeEmployeeID"></span>
                 <input name="LookUp" type="submit" class="btn btn-secondary" value="Look Up">
                 <a href="../KilburnazonEmployeeManagement.php"><button style="margin-left:1%;" type="button"
                         class="btn btn-secondary">Back</button></a>
@@ -327,7 +327,7 @@
 
                 <label class="form-label" >Employee\'s ID</label><br>
                 <input type="text" class="form-control" id="changeEmployeeID" name="changeEmployeeID"><br>
-                <span class="error" id="errorChangeEmployeeID"></span><br>
+                <span class="error" id="errorChangeEmployeeID"></span>
                 <input name="LookUp" type="submit" class="btn btn-secondary" value="Look Up">
                 <a href="../KilburnazonEmployeeManagement.php"><button style="margin-left:1%;" type="button"
                         class="btn btn-secondary">Back</button></a>
@@ -345,7 +345,7 @@
 
                 <label class="form-label" >Employee\'s ID</label><br>
                 <input type="text" class="form-control" id="changeEmployeeID" name="changeEmployeeID" value = "' . $changeEmployeeID . '"><br>
-                <span class="error" id="errorChangeEmployeeID"></span><br>
+                <span class="error" id="errorChangeEmployeeID"></span>
                 <input name="LoopUp" type="submit" class="btn btn-secondary" value="Look Up">
                 <a href="../KilburnazonEmployeeManagement.php"><button style="margin-left:1%;" type="button"
                         class="btn btn-secondary">Back</button></a>

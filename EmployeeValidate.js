@@ -19,48 +19,34 @@ function validateAddForm(){
     let employeeEmergencyPhone = document.getElementById("employeeEmergencyPhone").value;
 
     // Return false if any of the fields are empty
-    // if(employeeID == ""){
-    //     return(validateEmployeeID(employeeID, document.getElementById("errorID")));
-    //     // document.getElementById("errorID").innerHTML = "Please enter the employee's ID<br>";
-    //     // return false;
-    // }
     if(validateEmployeeID(employeeID, document.getElementById("errorID")) == false){
         return false;
     }
-    if(employeeName == ""){
-        document.getElementById("errorName").innerHTML = "Please enter the employee's Name<br>";
+    if(validateEmployeeName(employeeName, document.getElementById("errorName")) == false){
         return false;
     }
-    if(employeeAddress == ""){
-        document.getElementById("errorAddress").innerHTML = "Please enter the employee's House Address<br>";
+    if(validateEmployeeAddress(employeeAddress, document.getElementById("errorAddress")) == false){
         return false;
     }
-    if(employeeSalary == ""){
-        document.getElementById("errorSalary").innerHTML = "Please enter the employee's Salary<br>";
+    if(validateEmployeeSalary(employeeSalary, document.getElementById("errorSalary")) == false){
         return false;
     }
-    if(employeeDoB == ""){
-        document.getElementById("errorDoB").innerHTML = "Please enter the employee's Date of Birth<br>";
+    if(validateEmployeeDoB(employeeDoB, document.getElementById("errorDoB")) == false){
         return false;
     }
-    if(employeeNiN == ""){
-        document.getElementById("errorNiN").innerHTML = "Please enter the employee's National Insurance Number<br>";
+    if(validateEmployeeNiN(employeeNiN, document.getElementById("errorNiN")) == false){
         return false;
     }
-    if(employeeDepartment == "------"){
-        document.getElementById("errorDepartment").innerHTML = "Please enter the employee's Department<br>";
+    if(validateEmployeeDepartment(employeeDepartment, document.getElementById("errorDepartment")) == false){
         return false;
     }
-    if(employeeEmergencyName == ""){
-        document.getElementById("errorEmergencyName").innerHTML = "Please enter the employee's Emergency Contact's Name<br>";
+    if(validateEmployeeEmergencyName(employeeEmergencyName, document.getElementById("errorEmergencyName")) == false){
         return false;
     }
-    if(employeeEmergencyRelationship == ""){
-        document.getElementById("errorEmergencyRelationship").innerHTML = "Please enter the employee's Relationship with their emergency contact<br>";
+    if(validateEmployeeEmergencyRelationship(employeeEmergencyRelationship, document.getElementById("errorEmergencyRelationship")) == false){
         return false;
     }
-    if(employeeEmergencyPhone == ""){
-        document.getElementById("errorEmergencyPhone").innerHTML = "Please enter the employee's Emergency Contact's Phone Number<br>";
+    if(validateEmployeeEmergencyPhone(employeeEmergencyPhone, document.getElementById("errorEmergencyPhone")) == false){
         return false;
     }
 }
@@ -84,40 +70,31 @@ function validateUpdateForm(){
     let employeeEmergencyPhone = document.getElementById("employeeEmergencyPhone").value;
 
     // Return false if any of the fields are empty
-    if(employeeName == ""){
-        document.getElementById("errorName").innerHTML = "Please enter the employee's Name<br>";
+    if(validateEmployeeName(employeeName, document.getElementById("errorName")) == false){
         return false;
     }
-    if(employeeAddress == ""){
-        document.getElementById("errorAddress").innerHTML = "Please enter the employee's House Address<br>";
+    if(validateEmployeeAddress(employeeAddress, document.getElementById("errorAddress")) == false){
         return false;
     }
-    if(employeeSalary == ""){
-        document.getElementById("errorSalary").innerHTML = "Please enter the employee's Salary<br>";
+    if(validateEmployeeSalary(employeeSalary, document.getElementById("errorSalary")) == false){
         return false;
     }
-    if(employeeDoB == ""){
-        document.getElementById("errorDoB").innerHTML = "Please enter the employee's Date of Birth<br>";
+    if(validateEmployeeDoB(employeeDoB, document.getElementById("errorDoB")) == false){
         return false;
     }
-    if(employeeNiN == ""){
-        document.getElementById("errorNiN").innerHTML = "Please enter the employee's National Insurance Number<br>";
+    if(validateEmployeeNiN(employeeNiN, document.getElementById("errorNiN")) == false){
         return false;
     }
-    if(employeeDepartment == "------"){
-        document.getElementById("errorDepartment").innerHTML = "Please enter the employee's Department<br>";
+    if(validateEmployeeDepartment(employeeDepartment, document.getElementById("errorDepartment")) == false){
         return false;
     }
-    if(employeeEmergencyName == ""){
-        document.getElementById("errorEmergencyName").innerHTML = "Please enter the employee's Emergency Contact's Name<br>";
+    if(validateEmployeeEmergencyName(employeeEmergencyName, document.getElementById("errorEmergencyName")) == false){
         return false;
     }
-    if(employeeEmergencyRelationship == ""){
-        document.getElementById("errorEmergencyRelationship").innerHTML = "Please enter the employee's Relationship with their emergency contact<br>";
+    if(validateEmployeeEmergencyRelationship(employeeEmergencyRelationship, document.getElementById("errorEmergencyRelationship")) == false){
         return false;
     }
-    if(employeeEmergencyPhone == ""){
-        document.getElementById("errorEmergencyPhone").innerHTML = "Please enter the employee's Emergency Contact's Phone Number<br>";
+    if(validateEmployeeEmergencyPhone(employeeEmergencyPhone, document.getElementById("errorEmergencyPhone")) == false){
         return false;
     }
 }
@@ -130,16 +107,7 @@ function validateChooseUpdateEmployee(){
     }
 
     let eChangeID = document.getElementById("changeEmployeeID").value;
-    let eIDRegex = /\d{2}-\d{7}/;
-
-    // Check if employee ID field is populated
-    if (eChangeID == ""){
-        document.getElementById("errorChangeEmployeeID").innerHTML = "Please enter an employee's ID to proceed";
-        return false;
-    }
-    // Check if length of employee ID field is 10
-    else if (!eIDRegex.test(eChangeID)){
-        document.getElementById("errorChangeEmployeeID").innerHTML = "Employee ID is in the wrong format of \"00-0000000\"";
+    if(validateEmployeeID(eChangeID, document.getElementById("errorChangeEmployeeID")) == false){
         return false;
     }
     return true;
@@ -154,26 +122,10 @@ function validateChooseDeleteEmployee(){
 
     let eID = document.getElementById('employeeID').value;
     let eChangeID = document.getElementById("deleteEmployeeID").value;
-    let eIDRegex = /\d{2}-\d{7}/;
-
-    // Check if delete employee ID field is populated
-    if (eID == ""){
-        document.getElementById("errorEmployeeID").innerHTML = "Please enter an deleter employee's ID to proceed";
+    if(validateEmployeeID(eID, document.getElementById("errorEmployeeID")) == false){
         return false;
     }
-    // Check if delete employee ID field is populated
-    else if (eChangeID == ""){
-        document.getElementById("errorDeleteEmployeeID").innerHTML = "Please enter an employee's ID to proceed";
-        return false;
-    }
-    // Check if length of employee ID field is 10
-    else if (!eIDRegex.test(eID)){
-        document.getElementById("errorEmployeeID").innerHTML = "deleter Employee ID is in the wrong format of \"00-0000000\"";
-        return false;
-    }
-    // Check if length of employee ID field is 10
-    else if (!eIDRegex.test(eChangeID)){
-        document.getElementById("errorDeleteEmployeeID").innerHTML = "Employee ID is in the wrong format of \"00-0000000\"";
+    if(validateEmployeeID(eChangeID, document.getElementById("errorDeleteEmployeeID")) == false){
         return false;
     }
     return true;
@@ -185,9 +137,9 @@ function validateEmployeeID(eID, spanElement){
         return(false);
     }
     else{
-        let eIDRegex = /^\d{2}-\d{7}&/;
+        let eIDRegex = /^\d{2}\-\d{7}$/;
         if (!eIDRegex.test(eID)){
-            spanElement.innerHTML = "Employee ID is in the wrong format";
+            spanElement.innerHTML = "Employee ID is in the wrong format '00-0000000'";
             return(false);
         }
     }
@@ -225,9 +177,9 @@ function validateEmployeeSalary(eSalary, spanElement){
         return(false);
     }
     else{
-        let eIDRegex = /^(\d)*.(\d)*$/;
+        let eIDRegex = /^(\d)*(\.\d\d)?$/;
         if (!eIDRegex.test(eSalary)){
-            spanElement.innerHTML = "Employee Salary should only be a decimal number";
+            spanElement.innerHTML = "Employee Salary should only be a two decimal number";
             return(false);
         }
     }
@@ -257,7 +209,7 @@ function validateEmployeeNiN(eNiN, spanElement){
     else{
         let eIDRegex = /^[A-Za-z][A-Za-z]\d{6}[A-Za-z]$/;
         if (!eIDRegex.test(eNiN)){
-            spanElement.innerHTML = "Employee NiN should only be aa000000a";
+            spanElement.innerHTML = "Employee NiN should only be 'aa000000a'";
             return(false);
         }
     }
@@ -294,7 +246,7 @@ function validateEmployeeEmergencyRelationship(eEmergencyRelationship, spanEleme
     }
     else{
         let eIDRegex = /^([A-Za-z]|\s)*$/;
-        if (!eIDRegex.test(eNiN)){
+        if (!eIDRegex.test(eEmergencyRelationship)){
             spanElement.innerHTML = "Employee Emergency Relationship should only be text only";
             return(false);
         }
@@ -308,8 +260,8 @@ function validateEmployeeEmergencyPhone(eEmergencyPhone, spanElement){
         return(false);
     }
     else{
-        let eIDRegex = /^([A-Za-z]|\s)*$/;
-        if (!eIDRegex.test(eNiN)){
+        let eIDRegex = /^(\d{5})\s(\d{3})\s(\d{3})$/;
+        if (!eIDRegex.test(eEmergencyPhone)){
             spanElement.innerHTML = "Employee Emergency Phone Number should be 01234 567 890";
             return(false);
         }
