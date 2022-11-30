@@ -101,13 +101,13 @@ function deleteEmployee()
             }
 
             $sql = "DELETE FROM Employee WHERE employee_ID = :eDeleteID;
-            -- Delete employee from Employee Table
+                -- Delete employee from Employee Table
 
-            -- UPDATE DeleteLog
-            -- SET Deleter = :eID
-            -- WHERE Deleted = :eDeleteID and Delete_Time = NOW() and Delete_Date = CURDATE();
-            -- -- Update DeleteLog to contain Deleter Name
-        ";
+                UPDATE DeleteLog
+                SET Deleter = :eID
+                WHERE Deleted = :eDeleteID and Delete_Time = NOW() and Delete_Date = CURDATE();
+                -- Update DeleteLog to contain Deleter Name
+            ";
 
             try {
                 // $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
