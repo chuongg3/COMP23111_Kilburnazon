@@ -9,7 +9,10 @@
     <script type="text/javascript" src="../EmployeeValidate.js"></script>
     <link rel="stylesheet" type="text/css" href="../Employee.css">
     <!-- Bootstrap core CSS -->
-    <link href="../bootstrap.css" rel="stylesheet">
+    <!-- <link href="../bootstrap.css" rel="stylesheet"> -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
+
 </head>
 
 <body>
@@ -120,12 +123,9 @@
             SET emergency_Name = :eEmergencyName, emergency_PhoneNumber = :eEmergencyPhone, emergency_Relationship = :eEmergencyRelationship
             WHERE employee_ID = :eID;
             ";
-        echo ('before');
         try {
             // $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-            echo ('hi');
             $stmt = $pdo->prepare($sql);
-            echo ('hi');
             $stmt->execute([
                 'eID' => $eID,
                 'eName' => $eName,
@@ -139,7 +139,7 @@
                 'eEmergencyRelationship' => $eEmergencyRelationship
             ]);
 
-            echo ("<h7 class='pageSubHeading'>Successfully Updated DB</h7>");
+            echo ("<h5 class='pageSubHeading'>Successfully Updated Employee's Information</h5>");
         } catch (PDOException $e) {
             echo ("Error Uploading: " . $e->getMessage());
         }
@@ -205,33 +205,35 @@
         }
         echo ('
             <br>
-            <h3 class="pageSubHeading">Please Enter the New Employee\'s Information </h3>
+            <h4 class="pageSubHeading">Please Enter the New Employee\'s Information </h4>
             <form id="updateEmployeeForm" onsubmit="return validateUpdateForm();" method="POST" action="" class="generalForm">
                 <input type="hidden" id="changeEmployeeID" name="changeEmployeeID" value="' . $changeEmployeeID . '">
 
-                <label>Name</label><br>
-                <input type="text" class="form-textBox" id="employeeName" name="employeeName" value = "' . $eName . '"><br>
+                <label class="form-label">Name</label><br>
+                <input type="text" class="form-control" id="employeeName" name="employeeName" value = "' . $eName . '"><br>
                 <span class="error" id="errorName"></span><br>
 
-                <label>Address</label><br>
-                <input type="text" class="form-textBox" id="employeeAddress" name="employeeAddress" value = "' . $eAddress . '"><br>
+                <label class="form-label">Address</label><br>
+                <input type="text" class="form-control" id="employeeAddress" name="employeeAddress" value = "' . $eAddress . '"><br>
                 <span class="error" id="errorAddress"></span><br>
 
-                <label>Salary</label><br>
-                <label>£</label>
-                <input type="text" class="form-textBox" id="employeeSalary" name="employeeSalary" value = "' . $eSalary . '"><br>
+                <label class="form-label">Salary</label><br>
+                <div class="input-group mb-3">
+                    <span class="input-group-text" id="poundAddOn">£</span>
+                    <input type="text" class="form-control" id="employeeSalary" name="employeeSalary" value = "' . $eSalary . '"><br>
+                </div>
                 <span class="error" id="errorSalary"></span><br>
 
-                <label>Date of Birth</label><br>
-                <input type="date" class="form-textBox" id="employeeDoB" name="employeeDoB" value = "' . $eDoB . '"><br>
+                <label class="form-label">Date of Birth</label><br>
+                <input type="date" class="form-control" id="employeeDoB" name="employeeDoB" value = "' . $eDoB . '"><br>
                 <span class="error" id="errorDoB"></span><br>
 
-                <label>National Insurance Number</label><br>
-                <input type="text" class="form-textBox" id="employeeNiN" name="employeeNiN" value = "' . $eNiN . '"><br>
+                <label class="form-label">National Insurance Number</label><br>
+                <input type="text" class="form-control" id="employeeNiN" name="employeeNiN" value = "' . $eNiN . '"><br>
                 <span class="error" id="errorNiN"></span><br>
 
-                <label>Department</label><br>
-                <select id="employeeDepartment" name="employeeDepartment">');
+                <label class="form-label">Department</label><br>
+                <select class="form-select" id="employeeDepartment" name="employeeDepartment">');
         // Print the selected value of the department
         if ($eDepartment == "1") {
             echo ('
@@ -279,36 +281,39 @@
         echo ('</select><br>
                 <span class="error" id="errorDepartment"></span><br>
 
-                <label>Emergency Contact Name</label><br>
-                <input type="text" class="form-textBox" id="employeeEmergencyName" name="employeeEmergencyName" value = "' . $eEmergencyName . '"><br>
+                <label class="form-label">Emergency Contact Name</label><br>
+                <input type="text" class="form-control" id="employeeEmergencyName" name="employeeEmergencyName" value = "' . $eEmergencyName . '"><br>
                 <span class="error" id="errorEmergencyName"></span><br>
 
-                <label>Emergency Contact Relationship</label><br>
-                <input type="text" class="form-textBox" id="employeeEmergencyRelationship" name="employeeEmergencyRelationship" value = "' . $eEmergencyRelationship . '"><br>
+                <label class="form-label">Emergency Contact Relationship</label><br>
+                <input type="text" class="form-control" id="employeeEmergencyRelationship" name="employeeEmergencyRelationship" value = "' . $eEmergencyRelationship . '"><br>
                 <span class="error" id="errorEmergencyRelationship"></span><br>
 
-                <label>Emergency Contact Phone Number</label><br>
-                <input type="text" class="form-textBox" id="employeeEmergencyPhone" name="employeeEmergencyPhone" value = "' . $eEmergencyNumber . '"><br><br>
+                <label class="form-label">Emergency Contact Phone Number</label><br>
+                <input type="text" class="form-control" id="employeeEmergencyPhone" name="employeeEmergencyPhone" value = "' . $eEmergencyNumber . '"><br><br>
                 <span class="error" id="errorEmergencyPhone"></span><br>
 
                 <input name="updateButton" type="submit" class="btn btn-secondary" value="Update">
+                <a href="../KilburnazonEmployeeManagement.php"><button style="margin-left:1%;" type="button"
+                        class="btn btn-secondary">Back</button></a>
             </form>
         ');
-        echo (22);
         $pdo = null;
     }
 
     function echoForm()
     {
         echo ('
-            <h5 class="pageSubHeading">Please Enter the Employee\'s ID that you would like to update </h5><br>
+            <h4 class="pageSubHeading">Please Enter the Employee\'s ID that you would like to update </h4><br>
             <form id="chooseUpdateEmployeeForm" onsubmit="return validateChooseUpdateEmployee();" method="POST"
                 action="" class = "generalForm">
 
-                <label>Employee\'s ID</label><br>
-                <input type="text" class="form-textBox" id="changeEmployeeID" name="changeEmployeeID"><br>
+                <label class="form-label" >Employee\'s ID</label><br>
+                <input type="text" class="form-control" id="changeEmployeeID" name="changeEmployeeID"><br>
                 <span class="error" id="errorChangeEmployeeID"></span><br>
                 <input name="LookUp" type="submit" class="btn btn-secondary" value="Look Up">
+                <a href="../KilburnazonEmployeeManagement.php"><button style="margin-left:1%;" type="button"
+                        class="btn btn-secondary">Back</button></a>
             </form>        
         ');
     }
@@ -316,14 +321,16 @@
     function echoFormMessage()
     {
         echo ('
-            <h5 class="pageSubHeading">Please Enter the Employee\'s ID that you would like to update </h5><br>
+            <h4 class="pageSubHeading">Please Enter the Employee\'s ID that you would like to update </h4><br>
             <form id="chooseUpdateEmployeeForm" onsubmit="return validateChooseUpdateEmployee();" method="POST"
                 action="" class = "generalForm">
 
-                <label>Employee\'s ID</label><br>
-                <input type="text" class="form-textBox" id="changeEmployeeID" name="changeEmployeeID"><br>
+                <label class="form-label" >Employee\'s ID</label><br>
+                <input type="text" class="form-control" id="changeEmployeeID" name="changeEmployeeID"><br>
                 <span class="error" id="errorChangeEmployeeID"></span><br>
                 <input name="LookUp" type="submit" class="btn btn-secondary" value="Look Up">
+                <a href="../KilburnazonEmployeeManagement.php"><button style="margin-left:1%;" type="button"
+                        class="btn btn-secondary">Back</button></a>
             </form>        
         ');
     }
@@ -332,14 +339,16 @@
     {
         // Show the form to look up user
         echo ('
-            <h5 class="pageSubHeading">Please Enter the Employee\'s ID that you would like to update </h5><br>
+            <h4 class="pageSubHeading">Please Enter the Employee\'s ID that you would like to update </h4><br>
             <form id="chooseUpdateEmployeeForm" onsubmit="return validateChooseUpdateEmployee();" method="POST"
                 action="" class = "generalForm">
 
-                <label>Employee\'s ID</label><br>
-                <input type="text" class="form-textBox" id="changeEmployeeID" name="changeEmployeeID" value = "' . $changeEmployeeID . '"><br>
+                <label class="form-label" >Employee\'s ID</label><br>
+                <input type="text" class="form-control" id="changeEmployeeID" name="changeEmployeeID" value = "' . $changeEmployeeID . '"><br>
                 <span class="error" id="errorChangeEmployeeID"></span><br>
                 <input name="LoopUp" type="submit" class="btn btn-secondary" value="Look Up">
+                <a href="../KilburnazonEmployeeManagement.php"><button style="margin-left:1%;" type="button"
+                        class="btn btn-secondary">Back</button></a>
             </form>        
         ');
     }

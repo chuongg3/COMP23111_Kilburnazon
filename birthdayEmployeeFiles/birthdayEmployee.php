@@ -41,7 +41,9 @@
 
     // Display the information we fetched
     $stmt->setFetchMode(PDO::FETCH_ASSOC);
-    echo ("<br><table class='table table-light table-striped table-bordered'>
+    echo ("<br>
+        <div class='tables'>
+        <table class='table table-light table-striped table-bordered'>
                 <tr>
                     <th>No.</th>
                     <th>ID</th>
@@ -59,7 +61,8 @@
         echo ("</tr>");
         $i++;
     }
-    echo ("</table>");
+    echo ("</table>
+            </div>");
     $conn = null;
 
     ?>
