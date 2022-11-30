@@ -14,9 +14,15 @@ td {
     padding: 10px
 }
 
+.tables {
+    margin-left: 2.5%;
+    margin-right: 2.5%;
+}
+
 .generalForm {
     margin-top: 1%;
     margin-left: 2%;
+    width: 20%;
 }
 
 .pageHeading {
@@ -39,27 +45,4 @@ td {
     margin-top: 1%;
     margin-left: 2%;
     margin-bottom: 1%;
-}
-
-.form-textBox {
-    border: 1px solid gray-dark;
-    border-radius: .25rem;
-    padding: .375rem .75rem;
-    color: #495057;
-    background-color: #fff;
-    background-clip: padding-box;
-    font-size: 1rem;
-    line-height: 1.5;
-    transition: border-color .15s ease-in-out, box-shadow .15s ease-in-out
-}
-
-.form-dropDown {
-    border: 1px solid gray-dark;
-    border-radius: .25rem;
-    padding: .375rem .75rem;
-    color: #495057;
-    background-color: #fff;
-    font-size: 1rem;
-    line-height: 1.5;
-    transition: border-color .15s ease-in-out, box-shadow .15s ease-in-out
 }

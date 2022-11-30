@@ -41,7 +41,7 @@ function insertEmployee()
     $eEmergencyPhone = $_POST['employeeEmergencyPhone'];
 
     // Count number of records with employeeID, if > 0, then fail
-    $sql = "SELECT COUNT(*)
+    $sql = "SELECT COUNT(*) as count
             FROM Employee
             WHERE employee_ID = :eID;
     ";
@@ -54,7 +54,7 @@ function insertEmployee()
         echo ("Error");
     }
     $stmt->setFetchMode(PDO::FETCH_ASSOC);
-    if ($stmt->fetch() != 0) {
+    if ($stmt->fetch()['count'] != 0) {
         echo ("ERROR: Employee ID Already Exists");
     } else {
         // Insert employee into database

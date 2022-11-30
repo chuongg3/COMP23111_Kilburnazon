@@ -7,9 +7,10 @@ function filterEmployee()
     // <link rel="stylesheet" type="text/css" href="../Employee.css">
     // ');
     echo ('
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
-  </head>
+    <!--<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
+  </head>-->
     <link rel="stylesheet" type="text/css" href="../Employee.css">
+    <link href="../bootstrap.css" rel="stylesheet">
     ');
 
     // Header
@@ -93,7 +94,7 @@ function filterEmployee()
             'eEmergencyPhone' => $eEmergencyPhone,
             'eEmergencyPhoneBox' => $eEmergencyPhoneBox
         ]);
-        echo ("Successfully Filtered From DB");
+        // echo ("Successfully Filtered From DB");
     } catch (PDOException $e) {
         echo ("Error Filtering: " . $e->getMessage());
     }
@@ -102,22 +103,28 @@ function filterEmployee()
 
     // Display the information we fetched
     $stmt->setFetchMode(PDO::FETCH_ASSOC);
-    echo ("<table class='table table-light table-striped table-bordered>
+    echo ("<div class = 'tables'>
+            <table class='table table-light table-striped table-bordered table-hover'>
                 <tr>
+                    <th>No.</th>
                     <th>Name</th>
                     <th>Department</th>
                     <th>Emergency Relationship</th>
                     <th>Manager</th>
                 </tr>
         ");
+    $i = 1;
     while ($row = $stmt->fetch()) {
         echo ("<tr>");
+        echo ("<td>" . $i . "</td>");
         foreach ($row as $key => $pair) {
             echo ("<td>" . $pair . "</td>");
         }
         echo ("</tr>");
+        $i++;
     }
-    echo ("</table>");
+    echo ("</table>
+            </div>");
 
     echo ('
     <a href="../KilburnazonEmployeeManagement.php">
