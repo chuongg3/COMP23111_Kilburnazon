@@ -21,7 +21,7 @@
     require_once "../Default.php";
     echoHeader();
 
-    echo ('<h2 class="pageHeading">Add New Employee<h2>');
+    echo ('<h2 class="pageHeading">Add New Employee</h2>');
     if (empty($_POST)) {
         echoForm();
     } else {
@@ -140,7 +140,7 @@
                 <a href="../KilburnazonEmployeeManagement.php"><button style="margin-left:1%;" type="button"
                         class="btn btn-secondary">Back</button></a>
             </form>
-        </div>
+        </div><br>
         ');
     }
 
@@ -209,7 +209,7 @@
                 <a href="../KilburnazonEmployeeManagement.php"><button style="margin-left:1%;" type="button"
                         class="btn btn-secondary">Back</button></a>
             </form>
-        </div>
+        </div><br>
         ');
     }
 
@@ -311,7 +311,7 @@
                 <a href="../KilburnazonEmployeeManagement.php"><button style="margin-left:1%;" type="button"
                         class="btn btn-secondary">Back</button></a>
             </form>
-        </div>
+        </div><br>
         ');
     }
     function insertEmployee($eID, $eName, $eAddress, $eSalary, $eDoB, $eNiN, $eDepartment, $eEmergencyName, $eEmergencyRelationship, $eEmergencyPhone)
