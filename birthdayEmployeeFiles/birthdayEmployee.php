@@ -49,6 +49,7 @@
                     <th>ID</th>
                     <th>Name</th>
                     <th>DoB</th>
+                    <th>Address</th>
                 </tr>
         ");
     $i = 1;

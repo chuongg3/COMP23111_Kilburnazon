@@ -154,9 +154,9 @@ function validateEmployeeName(eName, spanElement){
         return(false);
     }
     else{
-        let eIDRegex = /^([A-Za-z]|\s)*$/;
+        let eIDRegex = /^([A-Za-z]|\s|\')*$/;
         if (!eIDRegex.test(eName)){
-            spanElement.innerHTML = "Employee Name should be text only";
+            spanElement.innerHTML = "Employee Name should be text only<br>";
             return(false);
         }
     }

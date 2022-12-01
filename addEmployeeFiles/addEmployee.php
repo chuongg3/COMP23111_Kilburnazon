@@ -336,10 +336,10 @@
 
         // Insert employee into database
         $sql = "INSERT INTO Employee(employee_ID, employee_Name, Home_Address, Salary, DoB, NiN, department_ID)
-                    VALUES (:eID, :eName, :eAddress, :eSalary, :eDoB, :eNiN, (SELECT department_ID FROM Department WHERE Department.department_Name = :eDepartment));
-                    
-                    INSERT INTO EmergencyContact(employee_ID, emergency_Name, emergency_PhoneNumber, emergency_Relationship)
-                    VALUES (:eID, :eEmergencyName, :eEmergencyPhone, :eEmergencyRelationship);";
+                VALUES (:eID, :eName, :eAddress, :eSalary, :eDoB, :eNiN, (SELECT department_ID FROM Department WHERE Department.department_Name = :eDepartment));
+                
+                INSERT INTO EmergencyContact(employee_ID, emergency_Name, emergency_PhoneNumber, emergency_Relationship)
+                VALUES (:eID, :eEmergencyName, :eEmergencyPhone, :eEmergencyRelationship);";
 
         try {
             // $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
